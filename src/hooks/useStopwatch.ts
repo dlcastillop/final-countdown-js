@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import { timeFormatter } from "../helpers";
 
 export const useStopwatch = (
   hours: number,
@@ -18,7 +19,6 @@ export const useStopwatch = (
   }
 
   const [time, setTime] = useState({ hours: 0, minutes: 0, seconds: 0 });
-  let timeStr = "";
 
   useEffect(() => {
     const interval = setInterval(() => {
@@ -55,17 +55,5 @@ export const useStopwatch = (
     return () => clearInterval(interval);
   }, [hours, minutes, seconds, time]);
 
-  time.hours % 10 === time.hours
-    ? (timeStr += `0${time.hours}:`)
-    : (timeStr += `${time.hours}:`);
-
-  time.minutes % 10 === time.minutes
-    ? (timeStr += `0${time.minutes}:`)
-    : (timeStr += `${time.minutes}:`);
-
-  time.seconds % 10 === time.seconds
-    ? (timeStr += `0${time.seconds}`)
-    : (timeStr += time.seconds);
-
-  return timeStr;
+  return timeFormatter(time.hours, time.minutes, time.seconds);
 };
