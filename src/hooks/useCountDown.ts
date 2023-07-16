@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 
-const useCountDown = (min: number, max: number): number => {
+export const useCountDown = (min: number, max: number): number => {
   const [count, setCount] = useState(max);
 
   useEffect(() => {
@@ -25,5 +25,3 @@ const useCountDown = (min: number, max: number): number => {
 
   return count;
 };
-
-export default useCountDown;

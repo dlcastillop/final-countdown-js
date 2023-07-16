@@ -1,4 +1,4 @@
-import useCountDown from "./hooks/useCountDown";
+import { useCountDown } from "./hooks";
 
 const App = () => {
   const a = useCountDown(1, 5);
