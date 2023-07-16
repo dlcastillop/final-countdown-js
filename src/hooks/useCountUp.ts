@@ -5,6 +5,7 @@ export const useCountUp = (
   max: number
 ): {
   current: number;
+  isPaused: boolean;
   pause: () => void;
   play: () => void;
   reset: () => void;
@@ -37,6 +38,7 @@ export const useCountUp = (
 
   return {
     current: count,
+    isPaused: paused,
     pause: () => setPaused(true),
     play: () => setPaused(false),
     reset: () => setCount(min),

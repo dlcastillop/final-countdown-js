@@ -1,14 +1,15 @@
 import { useCountUp } from "./hooks";
 
 const App = () => {
-  const a = useCountUp(0, 10);
+  const counter = useCountUp(0, 10);
 
   return (
     <>
-      {a.current}
-      <button onClick={() => a.pause()}>Pause</button>
-      <button onClick={() => a.play()}>Play</button>
-      <button onClick={() => a.reset()}>Reset</button>
+      <p>Counter value: {counter.current}</p>
+      <p>The counter is paused? {counter.isPaused ? "True" : "False"}</p>
+      <button onClick={() => counter.pause()}>Pause</button>
+      <button onClick={() => counter.play()}>Play</button>
+      <button onClick={() => counter.reset()}>Reset</button>
     </>
   );
 };
