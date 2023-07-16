@@ -1,9 +1,16 @@
-import { useStopwatch } from "./hooks";
+import { useCountDown } from "./hooks";
 
 const App = () => {
-  const a = useStopwatch(2, 30, 55);
+  const a = useCountDown(0, 5);
 
-  return <>{a}</>;
+  return (
+    <>
+      {a.current}
+      <button onClick={() => a.pause()}>Pause</button>
+      <button onClick={() => a.play()}>Play</button>
+      <button onClick={() => a.reset()}>Reset</button>
+    </>
+  );
 };
 
 export default App;
