@@ -5,6 +5,18 @@ export const useStopwatch = (
   minutes: number,
   seconds: number
 ): string => {
+  if (hours < 0) {
+    throw new Error("The hours parameter has to be more or equal than 0.");
+  } else if (minutes < 0 || minutes >= 60) {
+    throw new Error(
+      "The minutes parameter has to be more or equal than 0 or less than 60."
+    );
+  } else if (seconds < 1 || seconds >= 60) {
+    throw new Error(
+      "The seconds parameter has to be more or equal than 1 or less than 60."
+    );
+  }
+
   const [time, setTime] = useState({ hours: 0, minutes: 0, seconds: 0 });
   let timeStr = "";
 
