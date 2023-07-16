@@ -1,7 +1,7 @@
-import { useCountUp } from "./hooks";
+import { useCountDown } from "./hooks";
 
 const App = () => {
-  const a = useCountUp(0, 5);
+  const a = useCountDown(50, 150);
 
   return <>{a}</>;
 };
