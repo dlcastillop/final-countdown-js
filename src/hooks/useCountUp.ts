@@ -2,7 +2,8 @@ import { useState, useEffect } from "react";
 
 export const useCountUp = (
   min: number,
-  max: number
+  max: number,
+  startPaused?: boolean
 ): {
   current: number;
   isPaused: boolean;
@@ -15,7 +16,7 @@ export const useCountUp = (
   }
 
   const [count, setCount] = useState(min);
-  const [paused, setPaused] = useState(false);
+  const [paused, setPaused] = useState(startPaused ?? false);
 
   useEffect(() => {
     if (paused) {
