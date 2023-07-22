@@ -4,8 +4,15 @@ import { timeFormatter } from "../helpers";
 export const useStopwatch = (
   hours: number,
   minutes: number,
-  seconds: number
-): string => {
+  seconds: number,
+  startPaused?: boolean
+): {
+  current: string;
+  isPaused: boolean;
+  pause: () => void;
+  play: () => void;
+  reset: () => void;
+} => {
   if (hours < 0) {
     throw new Error("The hours parameter has to be more or equal than 0.");
   } else if (minutes < 0 || minutes >= 60) {
@@ -19,8 +26,13 @@ export const useStopwatch = (
   }
 
   const [time, setTime] = useState({ hours: 0, minutes: 0, seconds: 0 });
+  const [paused, setPaused] = useState(startPaused ?? false);
 
   useEffect(() => {
+    if (paused) {
+      return;
+    }
+
     const interval = setInterval(() => {
       setTime((prev) => {
         let h = prev.hours;
@@ -53,7 +65,13 @@ export const useStopwatch = (
     }
 
     return () => clearInterval(interval);
-  }, [hours, minutes, seconds, time]);
+  }, [hours, minutes, seconds, time, paused]);
 
-  return timeFormatter(time.hours, time.minutes, time.seconds);
+  return {
+    current: timeFormatter(time.hours, time.minutes, time.seconds),
+    isPaused: paused,
+    pause: () => setPaused(true),
+    play: () => setPaused(false),
+    reset: () => setTime({ hours: 0, minutes: 0, seconds: 0 }),
+  };
 };
