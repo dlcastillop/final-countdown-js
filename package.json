@@ -3,6 +3,9 @@
   "private": true,
   "version": "0.1.0",
   "type": "module",
+  "main": "dist/final-countdown.umd.js",
+  "module": "dist/final-countdown.es.js",
+  "types": "dist/final-countdown.d.ts",
   "scripts": {
     "dev": "vite",
     "build": "tsc && vite build",
@@ -11,7 +14,8 @@
   },
   "dependencies": {
     "react": "^18.2.0",
-    "react-dom": "^18.2.0"
+    "react-dom": "^18.2.0",
+    "vite-plugin-dts": "^3.3.1"
   },
   "devDependencies": {
     "@types/react": "^18.2.14",
@@ -24,5 +28,21 @@
     "eslint-plugin-react-refresh": "^0.4.1",
     "typescript": "^5.0.2",
     "vite": "^4.4.0"
-  }
+  },
+  "exports": {
+    ".": {
+      "import": {
+        "default": "./dist/final-countdown.es.js",
+        "types": "./dist/final-countdown.d.ts"
+      },
+      "require": {
+        "default": "./dist/final-countdown.umd.js",
+        "types": "./dist/final-countdown.d.ts"
+      }
+    }
+  },
+  "files": [
+    "dist",
+    "package.json"
+  ]
 }
