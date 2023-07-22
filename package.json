@@ -1,11 +1,11 @@
 {
-  "name": "final-countdown",
-  "private": true,
+  "name": "final-countdown-js",
+  "private": false,
   "version": "0.1.0",
   "type": "module",
-  "main": "dist/final-countdown.umd.js",
-  "module": "dist/final-countdown.es.js",
-  "types": "dist/final-countdown.d.ts",
+  "main": "dist/final-countdown-js.umd.js",
+  "module": "dist/final-countdown-js.es.js",
+  "types": "dist/final-countdown-js.d.ts",
   "scripts": {
     "dev": "vite",
     "build": "tsc && vite build",
@@ -32,12 +32,12 @@
   "exports": {
     ".": {
       "import": {
-        "default": "./dist/final-countdown.es.js",
-        "types": "./dist/final-countdown.d.ts"
+        "default": "./dist/final-countdown-js.es.js",
+        "types": "./dist/final-countdown-js.d.ts"
       },
       "require": {
-        "default": "./dist/final-countdown.umd.js",
-        "types": "./dist/final-countdown.d.ts"
+        "default": "./dist/final-countdown-js.umd.js",
+        "types": "./dist/final-countdown-js.d.ts"
       }
     }
   },

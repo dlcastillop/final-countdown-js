@@ -13,7 +13,7 @@ export default defineConfig({
   build: {
     lib: {
       entry: path.resolve(__dirname, "src/hooks/index.ts"),
-      name: "final-countdown",
+      name: "final-countdown-js",
       formats: ["es", "umd"],
       fileName: (format) => `final-countdown.${format}.js`,
     },
