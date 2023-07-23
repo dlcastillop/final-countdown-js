@@ -19,9 +19,9 @@ export const useStopwatch = (
     throw new Error(
       "The minutes parameter has to be more or equal than 0 or less than 60."
     );
-  } else if (seconds < 1 || seconds >= 60) {
+  } else if (seconds < 0 || seconds >= 60) {
     throw new Error(
-      "The seconds parameter has to be more or equal than 1 or less than 60."
+      "The seconds parameter has to be more or equal than 0 or less than 60."
     );
   }
 
