@@ -15,7 +15,7 @@ export default defineConfig({
       entry: path.resolve(__dirname, "src/hooks/index.ts"),
       name: "final-countdown-js",
       formats: ["es", "umd"],
-      fileName: (format) => `final-countdown.${format}.js`,
+      fileName: (format) => `final-countdown-js.${format}.js`,
     },
     rollupOptions: {
       external: ["react", "react-dom", "styled-components"],
