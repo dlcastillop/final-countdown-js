@@ -9,6 +9,7 @@ export const useStopwatch = (
 ): {
   current: string;
   isPaused: boolean;
+  isOver: boolean;
   pause: () => void;
   play: () => void;
   reset: () => void;
@@ -27,6 +28,7 @@ export const useStopwatch = (
 
   const [time, setTime] = useState({ hours: 0, minutes: 0, seconds: 0 });
   const [paused, setPaused] = useState(startPaused ?? false);
+  const [isOver, setIsOver] = useState(false);
 
   useEffect(() => {
     if (paused) {
@@ -60,6 +62,7 @@ export const useStopwatch = (
       time.minutes == minutes &&
       time.hours === hours
     ) {
+      setIsOver(true);
       clearInterval(interval);
       return;
     }
@@ -70,8 +73,12 @@ export const useStopwatch = (
   return {
     current: timeFormatter(time.hours, time.minutes, time.seconds),
     isPaused: paused,
+    isOver,
     pause: () => setPaused(true),
     play: () => setPaused(false),
-    reset: () => setTime({ hours: 0, minutes: 0, seconds: 0 }),
+    reset: () => {
+      setIsOver(false);
+      setTime({ hours: 0, minutes: 0, seconds: 0 });
+    },
   };
 };

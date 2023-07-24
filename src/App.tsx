@@ -1,7 +1,7 @@
-import { useCountUp } from "./hooks";
+import { useStopwatch } from "./hooks";
 
 const App = () => {
-  const counter = useCountUp(0, 2);
+  const counter = useStopwatch(0, 0, 2);
 
   return (
     <div>
