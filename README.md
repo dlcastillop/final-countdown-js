@@ -24,6 +24,7 @@ It returns an object with the following props:
 
 - current: the current value of the countdown timer
 - isPaused: a boolean value indicating whether the countdown timer is currently paused or not
+- isOver: a boolean value indicating whether the countdown timer is currently over or not
 - pause: the function to pause the countdown timer
 - play: the function to play the countdown timer
 - reset: the function to reset the countdown timer
@@ -64,6 +65,7 @@ It returns an object with the following props:
 
 - current: the current value of the countup timer
 - isPaused: a boolean value indicating whether the countup timer is currently paused or not
+- isOver: a boolean value indicating whether the countup timer is currently over or not
 - pause: the function to pause the countup timer
 - play: the function to play the countup timer
 - reset: the function to reset the countup timer
@@ -103,6 +105,7 @@ It returns an object with the following props:
 
 - current: the current value of the stopwatch in the format "hh:mm:ss"
 - isPaused: a boolean value indicating whether the stopwatch is currently paused or not
+- isOver: a boolean value indicating whether the stopwatch is currently over or not
 - pause: the function to pause the stopwatch
 - play: the function to play the stopwatch
 - reset: the function to reset the stopwatch
@@ -142,6 +145,7 @@ It returns an object with the following props:
 
 - current: the current value of the timer in the format "hh:mm:ss"
 - isPaused: a boolean value indicating whether the timer is currently paused or not
+- isOver: a boolean value indicating whether the timer is currently over or not
 - pause: the function to pause the timer
 - play: the function to play the timer
 - reset: the function to reset the timer
