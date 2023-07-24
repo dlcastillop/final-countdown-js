@@ -1,25 +1,13 @@
 import { useState, useEffect } from "react";
 import { timeFormatter } from "../helpers";
+import { IStopwatch } from "../interfaces";
 
 export const useStopwatch = (
   hours: number,
   minutes: number,
   seconds: number,
   startPaused?: boolean
-): {
-  current: string;
-  isPaused: boolean;
-  isOver: boolean;
-  hours: number;
-  minutes: number;
-  seconds: number;
-  elapsedSeconds: number;
-  remainingSeconds: number;
-  remainingTime: string;
-  pause: () => void;
-  play: () => void;
-  reset: () => void;
-} => {
+): IStopwatch => {
   if (hours < 0) {
     throw new Error("The hours parameter has to be more or equal than 0.");
   } else if (minutes < 0 || minutes >= 60) {

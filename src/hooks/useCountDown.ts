@@ -1,17 +1,11 @@
 import { useState, useEffect } from "react";
+import { ICount } from "../interfaces";
 
 export const useCountDown = (
   min: number,
   max: number,
   startPaused?: boolean
-): {
-  current: number;
-  isPaused: boolean;
-  isOver: boolean;
-  pause: () => void;
-  play: () => void;
-  reset: () => void;
-} => {
+): ICount => {
   if (min >= max) {
     throw new Error("The min parameter has to be less than the max parameter.");
   }

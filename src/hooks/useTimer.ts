@@ -1,25 +1,13 @@
 import { useState, useEffect } from "react";
 import { timeFormatter } from "../helpers";
+import { ITimer } from "../interfaces";
 
 export const useTimer = (
   hours: number,
   minutes: number,
   seconds: number,
   startPaused?: boolean
-): {
-  current: string;
-  isPaused: boolean;
-  isOver: boolean;
-  hours: number;
-  minutes: number;
-  seconds: number;
-  elapsedSeconds: number;
-  remainingSeconds: number;
-  elapsedTime: string;
-  pause: () => void;
-  play: () => void;
-  reset: () => void;
-} => {
+): ITimer => {
   if (hours < 0) {
     throw new Error("The hours parameter has to be more or equal than 0.");
   } else if (minutes < 0 || minutes >= 60) {
