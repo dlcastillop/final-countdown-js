@@ -108,6 +108,12 @@ It returns an object with the following props:
 - current: the current value of the stopwatch in the format "hh:mm:ss"
 - isPaused: a boolean value indicating whether the stopwatch is currently paused or not
 - isOver: a boolean value indicating whether the stopwatch is currently over or not
+- hours: a number indicating the current value of the hours on the stopwatch
+- minutes: a number indicating the current value of the minutes on the stopwatch
+- seconds: a number indicating the current value of the seconds on the stopwatch
+- elapsedSeconds: a number indicating the seconds that have passed since the start of the stopwatch
+- remainingSeconds: a number indicating the seconds that are left until the end of the stopwatch
+- remainingTime: the amount of time that is left until the end of the stopwatch in the format "hh:mm:ss"
 - pause: the function to pause the stopwatch
 - play: the function to play the stopwatch
 - reset: the function to reset the stopwatch
@@ -123,11 +129,17 @@ const ReactCounter = () => {
   return (
     <div>
       <p>Counter value: {counter.current}</p>
+      <p>Remaining time: {counter.remainingTime}</p>
+      <p>Hours: {counter.hours}</p>
+      <p>Minutes: {counter.minutes}</p>
+      <p>Seconds: {counter.seconds}</p>
+      <p>Elapsed seconds: {counter.elapsedSeconds}</p>
+      <p>Remaining seconds: {counter.remainingSeconds}</p>
       <p>The counter is paused? {counter.isPaused ? "True" : "False"}</p>
       <p>The counter is over? {counter.isOver ? "True" : "False"}</p>
-      <button onClick={() => counter.pause()}>Pause</button>
-      <button onClick={() => counter.play()}>Play</button>
-      <button onClick={() => counter.reset()}>Reset</button>
+      <button onClick={counter.pause}>Pause</button>
+      <button onClick={counter.play}>Play</button>
+      <button onClick={counter.reset}>Reset</button>
     </div>
   );
 };
@@ -149,6 +161,12 @@ It returns an object with the following props:
 - current: the current value of the timer in the format "hh:mm:ss"
 - isPaused: a boolean value indicating whether the timer is currently paused or not
 - isOver: a boolean value indicating whether the timer is currently over or not
+- hours: a number indicating the current value of the hours on the timer
+- minutes: a number indicating the current value of the minutes on the timer
+- seconds: a number indicating the current value of the seconds on the timer
+- elapsedSeconds: a number indicating the seconds that have passed since the start of the timer
+- remainingSeconds: a number indicating the seconds that are left until the end of the timer
+- elapsedTime: the amount of time that has passed since the start of the timer in the format "hh:mm:ss"
 - pause: the function to pause the timer
 - play: the function to play the timer
 - reset: the function to reset the timer
@@ -164,11 +182,17 @@ const ReactCounter = () => {
   return (
     <div>
       <p>Counter value: {counter.current}</p>
+      <p>Elapsed time: {counter.elapsedTime}</p>
+      <p>Hours: {counter.hours}</p>
+      <p>Minutes: {counter.minutes}</p>
+      <p>Seconds: {counter.seconds}</p>
+      <p>Elapsed seconds: {counter.elapsedSeconds}</p>
+      <p>Remaining seconds: {counter.remainingSeconds}</p>
       <p>The counter is paused? {counter.isPaused ? "True" : "False"}</p>
       <p>The counter is over? {counter.isOver ? "True" : "False"}</p>
-      <button onClick={() => counter.pause()}>Pause</button>
-      <button onClick={() => counter.play()}>Play</button>
-      <button onClick={() => counter.reset()}>Reset</button>
+      <button onClick={counter.pause}>Pause</button>
+      <button onClick={counter.play}>Play</button>
+      <button onClick={counter.reset}>Reset</button>
     </div>
   );
 };
