@@ -9,6 +9,7 @@ export const useTimer = (
 ): {
   current: string;
   isPaused: boolean;
+  isOver: boolean;
   pause: () => void;
   play: () => void;
   reset: () => void;
@@ -27,6 +28,7 @@ export const useTimer = (
 
   const [time, setTime] = useState({ hours, minutes, seconds });
   const [paused, setPaused] = useState(startPaused ?? false);
+  const [isOver, setIsOver] = useState(false);
 
   useEffect(() => {
     if (paused) {
@@ -58,6 +60,7 @@ export const useTimer = (
     }, 1000);
 
     if (time.seconds === 0 && time.minutes == 0 && time.hours === 0) {
+      setIsOver(true);
       clearInterval(interval);
       return;
     }
@@ -68,8 +71,12 @@ export const useTimer = (
   return {
     current: timeFormatter(time.hours, time.minutes, time.seconds),
     isPaused: paused,
+    isOver,
     pause: () => setPaused(true),
     play: () => setPaused(false),
-    reset: () => setTime({ hours, minutes, seconds }),
+    reset: () => {
+      setIsOver(false);
+      setTime({ hours, minutes, seconds });
+    },
   };
 };
