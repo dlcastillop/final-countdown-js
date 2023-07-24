@@ -10,6 +10,12 @@ export const useTimer = (
   current: string;
   isPaused: boolean;
   isOver: boolean;
+  hours: number;
+  minutes: number;
+  seconds: number;
+  elapsedSeconds: number;
+  remainingSeconds: number;
+  elapsedTime: string;
   pause: () => void;
   play: () => void;
   reset: () => void;
@@ -72,6 +78,20 @@ export const useTimer = (
     current: timeFormatter(time.hours, time.minutes, time.seconds),
     isPaused: paused,
     isOver,
+    hours: time.hours,
+    minutes: time.minutes,
+    seconds: time.seconds,
+    elapsedSeconds:
+      hours * 3600 +
+      minutes * 60 +
+      seconds -
+      (time.hours * 3600 + time.minutes * 60 + time.seconds),
+    remainingSeconds: time.hours * 3600 + time.minutes * 60 + time.seconds,
+    elapsedTime: timeFormatter(
+      hours - time.hours,
+      minutes - time.minutes,
+      seconds - time.seconds
+    ),
     pause: () => setPaused(true),
     play: () => setPaused(false),
     reset: () => {
