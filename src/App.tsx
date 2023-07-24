@@ -1,16 +1,17 @@
-import { useTimer } from "./hooks";
+import { useCountDown } from "./hooks";
 
 const App = () => {
-  const counter = useTimer(0, 0, 0);
+  const counter = useCountDown(0, 10);
 
   return (
-    <>
+    <div>
       <p>Counter value: {counter.current}</p>
       <p>The counter is paused? {counter.isPaused ? "True" : "False"}</p>
-      <button onClick={() => counter.pause()}>Pause</button>
-      <button onClick={() => counter.play()}>Play</button>
-      <button onClick={() => counter.reset()}>Reset</button>
-    </>
+      <p>The counter is over? {counter.isOver ? "True" : "False"}</p>
+      <button onClick={counter.pause}>Pause</button>
+      <button onClick={counter.play}>Play</button>
+      <button onClick={counter.reset}>Reset</button>
+    </div>
   );
 };
 
