@@ -10,6 +10,12 @@ export const useStopwatch = (
   current: string;
   isPaused: boolean;
   isOver: boolean;
+  hours: number;
+  minutes: number;
+  seconds: number;
+  elapsedSeconds: number;
+  remainingSeconds: number;
+  remainingTime: string;
   pause: () => void;
   play: () => void;
   reset: () => void;
@@ -74,6 +80,20 @@ export const useStopwatch = (
     current: timeFormatter(time.hours, time.minutes, time.seconds),
     isPaused: paused,
     isOver,
+    hours: time.hours,
+    minutes: time.minutes,
+    seconds: time.seconds,
+    elapsedSeconds: time.hours * 3600 + time.minutes * 60 + time.seconds,
+    remainingSeconds:
+      hours * 3600 +
+      minutes * 60 +
+      seconds -
+      (time.hours * 3600 + time.minutes * 60 + time.seconds),
+    remainingTime: timeFormatter(
+      hours - time.hours,
+      minutes - time.minutes,
+      seconds - time.seconds
+    ),
     pause: () => setPaused(true),
     play: () => setPaused(false),
     reset: () => {
