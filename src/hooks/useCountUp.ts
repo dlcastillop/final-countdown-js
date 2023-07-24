@@ -7,6 +7,7 @@ export const useCountUp = (
 ): {
   current: number;
   isPaused: boolean;
+  isOver: boolean;
   pause: () => void;
   play: () => void;
   reset: () => void;
@@ -17,6 +18,7 @@ export const useCountUp = (
 
   const [count, setCount] = useState(min);
   const [paused, setPaused] = useState(startPaused ?? false);
+  const [isOver, setIsOver] = useState(false);
 
   useEffect(() => {
     if (paused) {
@@ -30,6 +32,7 @@ export const useCountUp = (
     }, 1000);
 
     if (count >= max) {
+      setIsOver(true);
       clearInterval(interval);
       return;
     }
@@ -40,8 +43,12 @@ export const useCountUp = (
   return {
     current: count,
     isPaused: paused,
+    isOver,
     pause: () => setPaused(true),
     play: () => setPaused(false),
-    reset: () => setCount(min),
+    reset: () => {
+      setIsOver(false);
+      setCount(min);
+    },
   };
 };
