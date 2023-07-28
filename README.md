@@ -43,9 +43,10 @@ const ReactCounter = () => {
       <p>Counter value: {counter.current}</p>
       <p>Is the counter paused? {counter.isPaused ? "Yes" : "No"}</p>
       <p>Has the counter over? {counter.isOver ? "Yes" : "No"}</p>
-      <button onClick={() => counter.pause()}>Pause</button>
-      <button onClick={() => counter.play()}>Play</button>
-      <button onClick={() => counter.reset()}>Reset</button>
+      <button onClick={counter.pause}>Pause</button>
+      <button onClick={counter.play}>Play</button>
+      <button onClick={counter.reset}>Reset</button>
+      <button onClick={counter.togglePause}>Toggle Pause</button>
     </div>
   );
 };
@@ -86,9 +87,10 @@ const ReactCounter = () => {
       <p>Counter value: {counter.current}</p>
       <p>Is the counter paused? {counter.isPaused ? "Yes" : "No"}</p>
       <p>Has the counter over? {counter.isOver ? "Yes" : "No"}</p>
-      <button onClick={() => counter.pause()}>Pause</button>
-      <button onClick={() => counter.play()}>Play</button>
-      <button onClick={() => counter.reset()}>Reset</button>
+      <button onClick={counter.pause}>Pause</button>
+      <button onClick={counter.play}>Play</button>
+      <button onClick={counter.reset}>Reset</button>
+      <button onClick={counter.togglePause}>Toggle Pause</button>
     </div>
   );
 };
@@ -143,6 +145,7 @@ const ReactCounter = () => {
       <button onClick={counter.pause}>Pause</button>
       <button onClick={counter.play}>Play</button>
       <button onClick={counter.reset}>Reset</button>
+      <button onClick={counter.togglePause}>Toggle Pause</button>
     </div>
   );
 };
@@ -197,6 +200,7 @@ const ReactCounter = () => {
       <button onClick={counter.pause}>Pause</button>
       <button onClick={counter.play}>Play</button>
       <button onClick={counter.reset}>Reset</button>
+      <button onClick={counter.togglePause}>Toggle Pause</button>
     </div>
   );
 };
