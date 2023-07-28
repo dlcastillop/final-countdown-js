@@ -44,5 +44,8 @@ export const useCountUp = (
       setIsOver(false);
       setCount(min);
     },
+    togglePause: () => {
+      setPaused(!paused);
+    },
   };
 };
