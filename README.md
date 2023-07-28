@@ -41,8 +41,8 @@ const ReactCounter = () => {
   return (
     <div>
       <p>Counter value: {counter.current}</p>
-      <p>The counter is paused? {counter.isPaused ? "True" : "False"}</p>
-      <p>The counter is over? {counter.isOver ? "True" : "False"}</p>
+      <p>Is the counter paused? {counter.isPaused ? "Yes" : "No"}</p>
+      <p>Has the counter over? {counter.isOver ? "Yes" : "No"}</p>
       <button onClick={() => counter.pause()}>Pause</button>
       <button onClick={() => counter.play()}>Play</button>
       <button onClick={() => counter.reset()}>Reset</button>
@@ -84,8 +84,8 @@ const ReactCounter = () => {
   return (
     <div>
       <p>Counter value: {counter.current}</p>
-      <p>The counter is paused? {counter.isPaused ? "True" : "False"}</p>
-      <p>The counter is over? {counter.isOver ? "True" : "False"}</p>
+      <p>Is the counter paused? {counter.isPaused ? "Yes" : "No"}</p>
+      <p>Has the counter over? {counter.isOver ? "Yes" : "No"}</p>
       <button onClick={() => counter.pause()}>Pause</button>
       <button onClick={() => counter.play()}>Play</button>
       <button onClick={() => counter.reset()}>Reset</button>
@@ -138,8 +138,8 @@ const ReactCounter = () => {
       <p>Seconds: {counter.seconds}</p>
       <p>Elapsed seconds: {counter.elapsedSeconds}</p>
       <p>Remaining seconds: {counter.remainingSeconds}</p>
-      <p>The counter is paused? {counter.isPaused ? "True" : "False"}</p>
-      <p>The counter is over? {counter.isOver ? "True" : "False"}</p>
+      <p>Is the counter paused? {counter.isPaused ? "Yes" : "No"}</p>
+      <p>Has the counter over? {counter.isOver ? "Yes" : "No"}</p>
       <button onClick={counter.pause}>Pause</button>
       <button onClick={counter.play}>Play</button>
       <button onClick={counter.reset}>Reset</button>
@@ -192,8 +192,8 @@ const ReactCounter = () => {
       <p>Seconds: {counter.seconds}</p>
       <p>Elapsed seconds: {counter.elapsedSeconds}</p>
       <p>Remaining seconds: {counter.remainingSeconds}</p>
-      <p>The counter is paused? {counter.isPaused ? "True" : "False"}</p>
-      <p>The counter is over? {counter.isOver ? "True" : "False"}</p>
+      <p>Is the counter paused? {counter.isPaused ? "Yes" : "No"}</p>
+      <p>Has the counter over? {counter.isOver ? "Yes" : "No"}</p>
       <button onClick={counter.pause}>Pause</button>
       <button onClick={counter.play}>Play</button>
       <button onClick={counter.reset}>Reset</button>
