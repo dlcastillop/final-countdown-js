@@ -86,5 +86,8 @@ export const useTimer = (
       setIsOver(false);
       setTime({ hours, minutes, seconds });
     },
+    togglePause: () => {
+      setPaused(!paused);
+    },
   };
 };

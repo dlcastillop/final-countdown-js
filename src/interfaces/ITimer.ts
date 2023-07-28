@@ -11,4 +11,5 @@ export interface ITimer {
   pause: () => void;
   play: () => void;
   reset: () => void;
+  togglePause: () => void;
 }
