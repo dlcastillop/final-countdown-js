@@ -1,13 +1,12 @@
-import { useTimer } from "./hooks";
+import { useStopwatch } from "./hooks";
 
 const App = () => {
-  const counter = useTimer(0, 1, 5);
+  const counter = useStopwatch(0, 1, 5);
 
   return (
     <div>
       <p>Counter value: {counter.current}</p>
-      <p>The counter is paused? {counter.isPaused ? "True" : "False"}</p>
-      <button onClick={counter.togglePause}>Toggle Pause</button>
+      <p>{counter.currentHours}</p>
     </div>
   );
 };

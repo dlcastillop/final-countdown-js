@@ -66,9 +66,9 @@ export const useTimer = (
     current: timeFormatter(time.hours, time.minutes, time.seconds),
     isPaused: paused,
     isOver,
-    hours: time.hours,
-    minutes: time.minutes,
-    seconds: time.seconds,
+    currentHours: time.hours,
+    currentMinutes: time.minutes,
+    currentSeconds: time.seconds,
     elapsedSeconds:
       hours * 3600 +
       minutes * 60 +

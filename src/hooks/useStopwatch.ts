@@ -68,9 +68,9 @@ export const useStopwatch = (
     current: timeFormatter(time.hours, time.minutes, time.seconds),
     isPaused: paused,
     isOver,
-    hours: time.hours,
-    minutes: time.minutes,
-    seconds: time.seconds,
+    currentHours: time.hours,
+    currentMinutes: time.minutes,
+    currentSeconds: time.seconds,
     elapsedSeconds: time.hours * 3600 + time.minutes * 60 + time.seconds,
     remainingSeconds:
       hours * 3600 +

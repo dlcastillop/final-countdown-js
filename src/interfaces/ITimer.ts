@@ -2,9 +2,9 @@ export interface ITimer {
   current: string;
   isPaused: boolean;
   isOver: boolean;
-  hours: number;
-  minutes: number;
-  seconds: number;
+  currentHours: number;
+  currentMinutes: number;
+  currentSeconds: number;
   elapsedSeconds: number;
   remainingSeconds: number;
   elapsedTime: string;
