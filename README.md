@@ -28,6 +28,7 @@ It returns an object with the following props:
 - pause: the function to pause the countdown timer
 - play: the function to play the countdown timer
 - reset: the function to reset the countdown timer
+- togglePause: the function to toggle the pause
 
 Example:
 
@@ -70,6 +71,7 @@ It returns an object with the following props:
 - pause: the function to pause the countup timer
 - play: the function to play the countup timer
 - reset: the function to reset the countup timer
+- togglePause: the function to toggle the pause
 
 Example:
 
@@ -117,6 +119,7 @@ It returns an object with the following props:
 - pause: the function to pause the stopwatch
 - play: the function to play the stopwatch
 - reset: the function to reset the stopwatch
+- togglePause: the function to toggle the pause
 
 Example:
 
@@ -170,6 +173,7 @@ It returns an object with the following props:
 - pause: the function to pause the timer
 - play: the function to play the timer
 - reset: the function to reset the timer
+- togglePause: the function to toggle the pause
 
 Example:
 
