@@ -44,5 +44,8 @@ export const useCountDown = (
       setIsOver(false);
       setCount(max);
     },
+    togglePause: () => {
+      setPaused(!paused);
+    },
   };
 };

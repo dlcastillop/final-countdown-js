@@ -5,4 +5,5 @@ export interface ICount {
   pause: () => void;
   play: () => void;
   reset: () => void;
+  togglePause: () => void;
 }

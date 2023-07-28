@@ -1,22 +1,13 @@
-import { useTimer } from "./hooks";
+import { useCountDown } from "./hooks";
 
 const App = () => {
-  const counter = useTimer(0, 0, 20);
+  const counter = useCountDown(0, 10);
 
   return (
     <div>
       <p>Counter value: {counter.current}</p>
-      <p>Elapsed time: {counter.elapsedTime}</p>
-      <p>Hours: {counter.hours}</p>
-      <p>Minutes: {counter.minutes}</p>
-      <p>Seconds: {counter.seconds}</p>
-      <p>Elapsed seconds: {counter.elapsedSeconds}</p>
-      <p>Remaining seconds: {counter.remainingSeconds}</p>
       <p>The counter is paused? {counter.isPaused ? "True" : "False"}</p>
-      <p>The counter is over? {counter.isOver ? "True" : "False"}</p>
-      <button onClick={counter.pause}>Pause</button>
-      <button onClick={counter.play}>Play</button>
-      <button onClick={counter.reset}>Reset</button>
+      <button onClick={counter.togglePause}>Toggle Pause</button>
     </div>
   );
 };
