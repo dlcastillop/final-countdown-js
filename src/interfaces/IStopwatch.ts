@@ -11,4 +11,5 @@ export interface IStopwatch {
   pause: () => void;
   play: () => void;
   reset: () => void;
+  togglePause: () => void;
 }

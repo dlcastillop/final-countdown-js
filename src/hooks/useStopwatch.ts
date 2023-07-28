@@ -88,5 +88,8 @@ export const useStopwatch = (
       setIsOver(false);
       setTime({ hours: 0, minutes: 0, seconds: 0 });
     },
+    togglePause: () => {
+      setPaused(!paused);
+    },
   };
 };
