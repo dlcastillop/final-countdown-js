@@ -208,6 +208,10 @@ const ReactCounter = () => {
 export default ReactCounter;
 ```
 
+## Guides
+
+- [Full guide in Spanish](https://www.dlcastillop.com/blog/dominando-final-countdown-js-una-gu%C3%ADa-completa/)
+
 ## Contributions
 
 If you're interested in contributing to Final Countdown JS, please read our [contributing docs](https://github.com/dlcastillop/final-countdown-js/blob/main/CONTRIBUTING.md) before submitting a pull request.
