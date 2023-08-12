@@ -43,7 +43,7 @@ It returns an object with the following props:
 
 Example:
 
-```js
+```ts
 import { useCountDown } from "final-countdown-js";
 
 const ReactCounter = () => {
@@ -87,7 +87,7 @@ It returns an object with the following props:
 
 Example:
 
-```js
+```ts
 import { useCountUp } from "final-countdown-js";
 
 const ReactCounter = () => {
@@ -136,7 +136,7 @@ It returns an object with the following props:
 
 Example:
 
-```js
+```ts
 import { useStopwatch } from "final-countdown-js";
 
 const ReactCounter = () => {
@@ -191,7 +191,7 @@ It returns an object with the following props:
 
 Example:
 
-```js
+```ts
 import { useTimer } from "final-countdown-js";
 
 const ReactCounter = () => {
