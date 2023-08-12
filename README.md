@@ -12,7 +12,6 @@ npm i final-countdown-js
 
 ```
 yarn add final-countdown-js
-
 ```
 
 ```
@@ -43,7 +42,7 @@ It returns an object with the following props:
 
 Example:
 
-```ts
+```js
 import { useCountDown } from "final-countdown-js";
 
 const ReactCounter = () => {
@@ -87,7 +86,7 @@ It returns an object with the following props:
 
 Example:
 
-```ts
+```js
 import { useCountUp } from "final-countdown-js";
 
 const ReactCounter = () => {
@@ -136,7 +135,7 @@ It returns an object with the following props:
 
 Example:
 
-```ts
+```js
 import { useStopwatch } from "final-countdown-js";
 
 const ReactCounter = () => {
@@ -191,7 +190,7 @@ It returns an object with the following props:
 
 Example:
 
-```ts
+```js
 import { useTimer } from "final-countdown-js";
 
 const ReactCounter = () => {
