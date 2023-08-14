@@ -7,7 +7,7 @@ Final Countdown JS is a react hook library to handle all kinds of timers.
 You can use npm, yarn or pnpm to install Final Countdown JS.
 
 ```
-npm i final-countdown-js
+npm install final-countdown-js
 ```
 
 ```
@@ -15,7 +15,7 @@ yarn add final-countdown-js
 ```
 
 ```
-pnpm i final-countdown-js
+pnpm install final-countdown-js
 ```
 
 ## Hooks
