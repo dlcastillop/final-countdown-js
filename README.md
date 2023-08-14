@@ -110,7 +110,7 @@ export default ReactCounter;
 
 ### useStopwatch
 
-The useStopwatch hook provides stopwatch functionality.
+The useStopwatch hook provides stopwatch functionality with a limit.
 
 It takes four arguments:
 
@@ -152,6 +152,54 @@ const ReactCounter = () => {
       <p>Remaining seconds: {counter.remainingSeconds}</p>
       <p>Is the counter paused? {counter.isPaused ? "Yes" : "No"}</p>
       <p>Has the counter over? {counter.isOver ? "Yes" : "No"}</p>
+      <button onClick={counter.pause}>Pause</button>
+      <button onClick={counter.play}>Play</button>
+      <button onClick={counter.reset}>Reset</button>
+      <button onClick={counter.togglePause}>Toggle Pause</button>
+    </div>
+  );
+};
+
+export default ReactCounter;
+```
+
+### useUnlimitedStopwatch
+
+The useStopwatch hook provides unlimited stopwatch functionality.
+
+It takes one argument:
+
+- `startPaused` (optional, by default is false): a boolean value indicating whether the stopwatch should start in a paused state
+
+It returns an object with the following props:
+
+- `current`: the current value of the stopwatch in the format "hh:mm:ss"
+- `isPaused`: a boolean value indicating whether the stopwatch is currently paused or not
+- `currentHours`: a number indicating the current value of the hours on the stopwatch
+- `currentMinutes`: a number indicating the current value of the minutes on the stopwatch
+- `currentSeconds`: a number indicating the current value of the seconds on the stopwatch
+- `elapsedSeconds`: a number indicating the seconds that have passed since the start of the stopwatch
+- `pause`: the function to pause the stopwatch
+- `play`: the function to play the stopwatch
+- `reset`: the function to reset the stopwatch
+- `togglePause`: the function to toggle the pause
+
+Example:
+
+```js
+import { useUnlimitedStopwatch } from "final-countdown-js";
+
+const ReactCounter = () => {
+  const counter = useUnlimitedStopwatch();
+
+  return (
+    <div>
+      <p>Counter value: {counter.current}</p>
+      <p>Hours: {counter.currentHours}</p>
+      <p>Minutes: {counter.currentMinutes}</p>
+      <p>Seconds: {counter.currentSeconds}</p>
+      <p>Elapsed seconds: {counter.elapsedSeconds}</p>
+      <p>Is the counter paused? {counter.isPaused ? "Yes" : "No"}</p>
       <button onClick={counter.pause}>Pause</button>
       <button onClick={counter.play}>Play</button>
       <button onClick={counter.reset}>Reset</button>
