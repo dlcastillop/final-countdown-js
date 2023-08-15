@@ -1,8 +1,8 @@
 import { useState, useEffect } from "react";
-import { addLeadingZero } from "../helpers";
+import { addLeadingZero } from ".";
 import { IInternalHooks } from "../interfaces";
 
-const useInternalTimer = (
+export const useInternalTimer = (
   hours: number,
   minutes: number,
   seconds: number,
@@ -62,5 +62,3 @@ const useInternalTimer = (
     },
   };
 };
-
-export default useInternalTimer;

@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { addLeadingZero } from "../helpers";
 import { IStopwatch } from "../interfaces";
-import useInternalTimer from "./useInternalTimer";
+import { useInternalTimer } from "../helpers";
 
 export const useStopwatch = (
   hours: number,
