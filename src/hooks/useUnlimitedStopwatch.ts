@@ -1,12 +1,14 @@
 import { useState, useEffect } from "react";
-import { timeFormatter } from "../helpers";
+import { addLeadingZero } from "../helpers";
 import { IUnlimitedStopwatch } from "../interfaces";
 
 export const useUnlimitedStopwatch = (
-  startPaused?: boolean
+  startPaused?: boolean,
+  separator?: string
 ): IUnlimitedStopwatch => {
   const [time, setTime] = useState({ hours: 0, minutes: 0, seconds: 0 });
   const [paused, setPaused] = useState(startPaused ?? false);
+  const divider = separator ?? ":";
 
   useEffect(() => {
     if (paused) {
@@ -39,7 +41,12 @@ export const useUnlimitedStopwatch = (
   }, [time, paused]);
 
   return {
-    current: timeFormatter(time.hours, time.minutes, time.seconds),
+    current: {
+      withLeadingZero: `${addLeadingZero(time.hours)}${divider}${addLeadingZero(
+        time.minutes
+      )}${divider}${addLeadingZero(time.seconds)}`,
+      withoutLeadingZero: `${time.hours}${divider}${time.minutes}${divider}${time.seconds}`,
+    },
     isPaused: paused,
     currentHours: time.hours,
     currentMinutes: time.minutes,

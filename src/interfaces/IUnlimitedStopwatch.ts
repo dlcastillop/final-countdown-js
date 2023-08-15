@@ -1,5 +1,7 @@
+import IZero from "./IZero";
+
 export interface IUnlimitedStopwatch {
-  current: string;
+  current: IZero;
   isPaused: boolean;
   currentHours: number;
   currentMinutes: number;
