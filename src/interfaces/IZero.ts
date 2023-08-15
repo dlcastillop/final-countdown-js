@@ -1,4 +1,4 @@
-export default interface ICurrent {
+export default interface IZero {
   withLeadingZero: string;
   withoutLeadingZero: string;
 }

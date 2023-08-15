@@ -1,12 +1,13 @@
 import { useState, useEffect } from "react";
-import { timeFormatter } from "../helpers";
+import { addLeadingZero } from "../helpers";
 import { IStopwatch } from "../interfaces";
 
 export const useStopwatch = (
   hours: number,
   minutes: number,
   seconds: number,
-  startPaused?: boolean
+  startPaused?: boolean,
+  separator?: string
 ): IStopwatch => {
   if (hours < 0) {
     throw new Error("The hours parameter has to be more or equal than 0.");
@@ -22,6 +23,7 @@ export const useStopwatch = (
 
   const [time, setTime] = useState({ hours: 0, minutes: 0, seconds: 0 });
   const [paused, setPaused] = useState(startPaused ?? false);
+  const divider = separator ?? ":";
   const [isOver, setIsOver] = useState(false);
 
   useEffect(() => {
@@ -65,7 +67,12 @@ export const useStopwatch = (
   }, [hours, minutes, seconds, time, paused]);
 
   return {
-    current: timeFormatter(time.hours, time.minutes, time.seconds),
+    current: {
+      withLeadingZero: `${addLeadingZero(time.hours)}${divider}${addLeadingZero(
+        time.minutes
+      )}${divider}${addLeadingZero(time.seconds)}`,
+      withoutLeadingZero: `${time.hours}${divider}${time.minutes}${divider}${time.seconds}`,
+    },
     isPaused: paused,
     isOver,
     currentHours: time.hours,
@@ -77,11 +84,16 @@ export const useStopwatch = (
       minutes * 60 +
       seconds -
       (time.hours * 3600 + time.minutes * 60 + time.seconds),
-    remainingTime: timeFormatter(
-      hours - time.hours,
-      minutes - time.minutes,
-      seconds - time.seconds
-    ),
+    remainingTime: {
+      withLeadingZero: `${addLeadingZero(
+        hours - time.hours
+      )}${divider}${addLeadingZero(
+        minutes - time.minutes
+      )}${divider}${addLeadingZero(seconds - time.seconds)}`,
+      withoutLeadingZero: `${hours - time.hours}${divider}${
+        minutes - time.minutes
+      }${divider}${seconds - time.seconds}`,
+    },
     pause: () => setPaused(true),
     play: () => setPaused(false),
     reset: () => {

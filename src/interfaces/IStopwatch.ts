@@ -1,5 +1,7 @@
+import IZero from "./IZero";
+
 export interface IStopwatch {
-  current: string;
+  current: IZero;
   isPaused: boolean;
   isOver: boolean;
   currentHours: number;
@@ -7,7 +9,7 @@ export interface IStopwatch {
   currentSeconds: number;
   elapsedSeconds: number;
   remainingSeconds: number;
-  remainingTime: string;
+  remainingTime: IZero;
   pause: () => void;
   play: () => void;
   reset: () => void;

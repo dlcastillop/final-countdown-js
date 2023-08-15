@@ -1,7 +1,7 @@
-import ICurrent from "./ICurrent";
+import IZero from "./IZero";
 
 export interface ICount {
-  current: ICurrent;
+  current: IZero;
   isPaused: boolean;
   isOver: boolean;
   pause: () => void;
