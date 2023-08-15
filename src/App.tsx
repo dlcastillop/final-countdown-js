@@ -1,11 +1,11 @@
-import { useCountDown } from "./hooks";
+import { useCountUp } from "./hooks";
 
 const App = () => {
-  const counter = useCountDown(0, 10);
+  const counter = useCountUp(8, 12);
 
   return (
     <div>
-      <p>Counter value: {counter.current.withoutLeadingZero}</p>
+      <p>Counter value: {counter.current.withLeadingZero}</p>
     </div>
   );
 };

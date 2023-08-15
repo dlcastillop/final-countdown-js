@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import { ICount } from "../interfaces";
+import { addLeadingZero } from "../helpers";
 
 export const useCountUp = (
   min: number,
@@ -35,7 +36,10 @@ export const useCountUp = (
   }, [count, max, paused]);
 
   return {
-    current: count,
+    current: {
+      withLeadingZero: addLeadingZero(count),
+      withoutLeadingZero: count.toString(),
+    },
     isPaused: paused,
     isOver,
     pause: () => setPaused(true),
