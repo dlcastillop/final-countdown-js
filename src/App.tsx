@@ -1,20 +1,11 @@
-import { useUnlimitedStopwatch } from "./hooks";
+import { useCountDown } from "./hooks";
 
 const App = () => {
-  const counter = useUnlimitedStopwatch();
+  const counter = useCountDown(0, 10);
 
   return (
     <div>
-      <p>Counter value: {counter.current}</p>
-      <p>Hours: {counter.currentHours}</p>
-      <p>Minutes: {counter.currentMinutes}</p>
-      <p>Seconds: {counter.currentSeconds}</p>
-      <p>Elapsed seconds: {counter.elapsedSeconds}</p>
-      <p>Is the counter paused? {counter.isPaused ? "Yes" : "No"}</p>
-      <button onClick={counter.pause}>Pause</button>
-      <button onClick={counter.play}>Play</button>
-      <button onClick={counter.reset}>Reset</button>
-      <button onClick={counter.togglePause}>Toggle Pause</button>
+      <p>Counter value: {counter.current.withoutLeadingZero}</p>
     </div>
   );
 };

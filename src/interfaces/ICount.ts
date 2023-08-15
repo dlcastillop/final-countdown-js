@@ -1,5 +1,7 @@
+import ICurrent from "./ICurrent";
+
 export interface ICount {
-  current: number;
+  current: ICurrent;
   isPaused: boolean;
   isOver: boolean;
   pause: () => void;
