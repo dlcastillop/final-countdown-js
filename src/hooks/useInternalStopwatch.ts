@@ -1,30 +1,17 @@
 import { useState, useEffect } from "react";
 import { addLeadingZero } from "../helpers";
-import { IStopwatch } from "../interfaces";
+import { IInternalHooks } from "../interfaces";
 
-export const useStopwatch = (
+const useInternalStopwatch = (
   hours: number,
   minutes: number,
   seconds: number,
   startPaused?: boolean,
   separator?: string
-): IStopwatch => {
-  if (hours < 0) {
-    throw new Error("The hours parameter has to be more or equal than 0.");
-  } else if (minutes < 0 || minutes >= 60) {
-    throw new Error(
-      "The minutes parameter has to be more or equal than 0 or less than 60."
-    );
-  } else if (seconds < 0 || seconds >= 60) {
-    throw new Error(
-      "The seconds parameter has to be more or equal than 0 or less than 60."
-    );
-  }
-
+): IInternalHooks => {
   const [time, setTime] = useState({ hours: 0, minutes: 0, seconds: 0 });
-  const [paused, setPaused] = useState(startPaused ?? false);
+  const paused = startPaused ?? false;
   const divider = separator ?? ":";
-  const [isOver, setIsOver] = useState(false);
 
   useEffect(() => {
     if (paused) {
@@ -58,7 +45,6 @@ export const useStopwatch = (
       time.minutes == minutes &&
       time.hours === hours
     ) {
-      setIsOver(true);
       clearInterval(interval);
       return;
     }
@@ -73,29 +59,10 @@ export const useStopwatch = (
       )}${divider}${addLeadingZero(time.seconds)}`,
       withoutLeadingZero: `${time.hours}${divider}${time.minutes}${divider}${time.seconds}`,
     },
-    isPaused: paused,
-    isOver,
-    currentHours: time.hours,
-    currentMinutes: time.minutes,
-    currentSeconds: time.seconds,
-    elapsedSeconds: time.hours * 3600 + time.minutes * 60 + time.seconds,
-    remainingSeconds:
-      hours * 3600 +
-      minutes * 60 +
-      seconds -
-      (time.hours * 3600 + time.minutes * 60 + time.seconds),
-    remainingTime: {
-      withLeadingZero: "timerr.current.withLeadingZero",
-      withoutLeadingZero: "timerr.current.withoutLeadingZero",
-    },
-    pause: () => setPaused(true),
-    play: () => setPaused(false),
     reset: () => {
-      setIsOver(false);
       setTime({ hours: 0, minutes: 0, seconds: 0 });
-    },
-    togglePause: () => {
-      setPaused(!paused);
     },
   };
 };
+
+export default useInternalStopwatch;

@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { addLeadingZero } from "../helpers";
 import { ITimer } from "../interfaces";
-import { useStopwatch } from ".";
+import useInternalStopwatch from "./useInternalStopwatch";
 
 export const useTimer = (
   hours: number,
@@ -26,7 +26,13 @@ export const useTimer = (
   const [paused, setPaused] = useState(startPaused ?? false);
   const divider = separator ?? ":";
   const [isOver, setIsOver] = useState(false);
-  const stopwatch = useStopwatch(hours, minutes, seconds, paused, divider);
+  const stopwatch = useInternalStopwatch(
+    hours,
+    minutes,
+    seconds,
+    paused,
+    divider
+  );
 
   useEffect(() => {
     if (paused) {
@@ -93,6 +99,7 @@ export const useTimer = (
     reset: () => {
       setIsOver(false);
       setTime({ hours, minutes, seconds });
+      stopwatch.reset();
     },
     togglePause: () => {
       setPaused(!paused);
