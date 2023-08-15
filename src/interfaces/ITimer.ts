@@ -1,5 +1,7 @@
+import IZero from "./IZero";
+
 export interface ITimer {
-  current: string;
+  current: IZero;
   isPaused: boolean;
   isOver: boolean;
   currentHours: number;
@@ -7,7 +9,7 @@ export interface ITimer {
   currentSeconds: number;
   elapsedSeconds: number;
   remainingSeconds: number;
-  elapsedTime: string;
+  elapsedTime: IZero;
   pause: () => void;
   play: () => void;
   reset: () => void;

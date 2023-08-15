@@ -1,11 +1,12 @@
-import { useUnlimitedStopwatch } from "./hooks";
+import { useTimer } from "./hooks";
 
 const App = () => {
-  const counter = useUnlimitedStopwatch(false, ":::");
+  const counter = useTimer(1, 2, 3, false, ".");
 
   return (
     <div>
-      <p>Counter value: {counter.current.withoutLeadingZero}</p>
+      <p>Counter value: {counter.current.withLeadingZero}</p>
+      <p>{counter.elapsedTime.withLeadingZero}</p>
     </div>
   );
 };
