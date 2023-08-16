@@ -1,7 +1,7 @@
-import { useInternalTimer } from "./helpers";
+import { useInternalStopwatch } from "./helpers";
 
 const App = () => {
-  const counter = useInternalTimer(1, 0, 0, 0, false, ".");
+  const counter = useInternalStopwatch(1, 1, 1, 1, false, ".");
 
   return (
     <div>
