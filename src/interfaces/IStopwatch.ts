@@ -4,6 +4,7 @@ export interface IStopwatch {
   current: IZero;
   isPaused: boolean;
   isOver: boolean;
+  currentDays: number;
   currentHours: number;
   currentMinutes: number;
   currentSeconds: number;
