@@ -32,7 +32,9 @@ It takes three arguments:
 
 It returns an object with the following props:
 
-- `current`: the current value of the countdown timer
+- `current`: an object with two props:
+  - `withLeadingZero`: a string with the current value of the counter with a leading zero
+  - `withoutLeadingZero`: a string with the current value of the counter without a leading zero
 - `isPaused`: a boolean value indicating whether the countdown timer is currently paused or not
 - `isOver`: a boolean value indicating whether the countdown timer is currently over or not
 - `pause`: the function to pause the countdown timer
@@ -46,17 +48,23 @@ Example:
 import { useCountDown } from "final-countdown-js";
 
 const ReactCounter = () => {
-  const counter = useCountDown(0, 10);
+  const countDown = useCountDown(0, 10);
 
   return (
     <div>
-      <p>Counter value: {counter.current}</p>
-      <p>Is the counter paused? {counter.isPaused ? "Yes" : "No"}</p>
-      <p>Has the counter over? {counter.isOver ? "Yes" : "No"}</p>
-      <button onClick={counter.pause}>Pause</button>
-      <button onClick={counter.play}>Play</button>
-      <button onClick={counter.reset}>Reset</button>
-      <button onClick={counter.togglePause}>Toggle Pause</button>
+      <p>
+        Counter value with leading zero: {countDown.current.withLeadingZero}
+      </p>
+      <p>
+        Counter value without leading zero:{" "}
+        {countDown.current.withoutLeadingZero}
+      </p>
+      <p>Is the counter paused? {countDown.isPaused ? "Yes" : "No"}</p>
+      <p>Has the counter over? {countDown.isOver ? "Yes" : "No"}</p>
+      <button onClick={countDown.pause}>Pause</button>
+      <button onClick={countDown.play}>Play</button>
+      <button onClick={countDown.reset}>Reset</button>
+      <button onClick={countDown.togglePause}>Toggle Pause</button>
     </div>
   );
 };
