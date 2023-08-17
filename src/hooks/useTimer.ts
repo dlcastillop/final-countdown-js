@@ -4,29 +4,35 @@ import { ITimer } from "../interfaces";
 import { useInternalStopwatch } from "../helpers";
 
 export const useTimer = (
+  days: number,
   hours: number,
   minutes: number,
   seconds: number,
   startPaused?: boolean,
   separator?: string
 ): ITimer => {
-  if (hours < 0) {
-    throw new Error("The hours parameter has to be more or equal than 0.");
+  if (days < 0) {
+    throw new Error("The days parameter has to be more or equal than 0.");
+  } else if (hours < 0 || hours >= 24) {
+    throw new Error(
+      "The hours parameter has to be more or equal than 0 and less than 24."
+    );
   } else if (minutes < 0 || minutes >= 60) {
     throw new Error(
-      "The minutes parameter has to be more or equal than 0 or less than 60."
+      "The minutes parameter has to be more or equal than 0 and less than 60."
     );
   } else if (seconds < 0 || seconds >= 60) {
     throw new Error(
-      "The seconds parameter has to be more or equal than 0 or less than 60."
+      "The seconds parameter has to be more or equal than 0 and less than 60."
     );
   }
 
-  const [time, setTime] = useState({ hours, minutes, seconds });
+  const [time, setTime] = useState({ days, hours, minutes, seconds });
   const [paused, setPaused] = useState(startPaused ?? false);
   const divider = separator ?? ":";
   const [isOver, setIsOver] = useState(false);
   const stopwatch = useInternalStopwatch(
+    days,
     hours,
     minutes,
     seconds,
@@ -41,6 +47,7 @@ export const useTimer = (
 
     const interval = setInterval(() => {
       setTime((prev) => {
+        let d = prev.days;
         let h = prev.hours;
         let m = prev.minutes;
         let s = prev.seconds;
@@ -49,7 +56,12 @@ export const useTimer = (
           s = 59;
           if (m - 1 < 0) {
             m = 59;
-            if (h - 1 >= 0) {
+            if (h - 1 < 0) {
+              h = 23;
+              if (d - 1 >= 0) {
+                d--;
+              }
+            } else {
               h--;
             }
           } else {
@@ -59,37 +71,50 @@ export const useTimer = (
           s--;
         }
 
-        return { hours: h, minutes: m, seconds: s };
+        return { days: d, hours: h, minutes: m, seconds: s };
       });
     }, 1000);
 
-    if (time.seconds === 0 && time.minutes == 0 && time.hours === 0) {
+    if (
+      time.seconds === 0 &&
+      time.minutes === 0 &&
+      time.hours === 0 &&
+      time.days === 0
+    ) {
       setIsOver(true);
       clearInterval(interval);
       return;
     }
 
     return () => clearInterval(interval);
-  }, [hours, minutes, seconds, time, paused]);
+  }, [days, hours, minutes, seconds, time, paused]);
 
   return {
     current: {
-      withLeadingZero: `${addLeadingZero(time.hours)}${divider}${addLeadingZero(
-        time.minutes
-      )}${divider}${addLeadingZero(time.seconds)}`,
-      withoutLeadingZero: `${time.hours}${divider}${time.minutes}${divider}${time.seconds}`,
+      withLeadingZero: `${addLeadingZero(time.days)}${divider}${addLeadingZero(
+        time.hours
+      )}${divider}${addLeadingZero(time.minutes)}${divider}${addLeadingZero(
+        time.seconds
+      )}`,
+      withoutLeadingZero: `${time.days}${divider}${time.hours}${divider}${time.minutes}${divider}${time.seconds}`,
     },
     isPaused: paused,
     isOver,
+    currentDays: time.days,
     currentHours: time.hours,
     currentMinutes: time.minutes,
     currentSeconds: time.seconds,
     elapsedSeconds:
+      days * 86400 +
       hours * 3600 +
       minutes * 60 +
       seconds -
-      (time.hours * 3600 + time.minutes * 60 + time.seconds),
-    remainingSeconds: time.hours * 3600 + time.minutes * 60 + time.seconds,
+      (time.days * 86400 +
+        time.hours * 3600 +
+        time.minutes * 60 +
+        time.seconds),
+    remainingSeconds:
+      time.days * 86400 + time.hours * 3600 + time.minutes * 60 + time.seconds,
     elapsedTime: {
       withLeadingZero: stopwatch.current.withLeadingZero,
       withoutLeadingZero: stopwatch.current.withoutLeadingZero,
@@ -98,7 +123,7 @@ export const useTimer = (
     play: () => setPaused(false),
     reset: () => {
       setIsOver(false);
-      setTime({ hours, minutes, seconds });
+      setTime({ days, hours, minutes, seconds });
       stopwatch.reset();
     },
     togglePause: () => {

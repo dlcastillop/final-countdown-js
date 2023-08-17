@@ -1,7 +1,7 @@
-import { useStopwatch } from "./hooks";
+import { useTimer } from "./hooks";
 
 const App = () => {
-  const counter = useStopwatch(1, 1, 1, 1, false, ".");
+  const counter = useTimer(1, 1, 1, 1, false, ".");
 
   return (
     <div>
@@ -13,8 +13,8 @@ const App = () => {
       <p>Seconds: {counter.currentSeconds}</p>
       <p>Elapsed seconds: {counter.elapsedSeconds}</p>
       <p>Remaining seconds: {counter.remainingSeconds}</p>
-      <p>Remaining seconds: {counter.remainingTime.withLeadingZero}</p>
-      <p>Remaining seconds: {counter.remainingTime.withoutLeadingZero}</p>
+      <p>Remaining seconds: {counter.elapsedTime.withLeadingZero}</p>
+      <p>Remaining seconds: {counter.elapsedTime.withoutLeadingZero}</p>
       <p>Is the counter paused? {counter.isPaused ? "Yes" : "No"}</p>
       <p>Has the counter over? {counter.isOver ? "Yes" : "No"}</p>
       <button onClick={counter.pause}>Pause</button>
