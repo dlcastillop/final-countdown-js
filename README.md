@@ -127,10 +127,10 @@ The useStopwatch hook provides stopwatch functionality with a limit.
 
 It takes six arguments:
 
-- `days` (number): the initial number of days to start the stopwatch. It has to be equal to or greater than 0.
-- `hours` (number): the initial number of hours to start the stopwatch. The value must be between 0 (inclusive) and 24 (exclusive).
-- `minutes` (number): the initial number of minutes to start the stopwatch. The value must be between 0 (inclusive) and 60 (exclusive).
-- `seconds` (number): the initial number of seconds to start the stopwatch. The value must be between 0 (inclusive) and 60 (exclusive).
+- `days` (number): the final number of days to start the stopwatch. It has to be equal to or greater than 0.
+- `hours` (number): the final number of hours to start the stopwatch. The value must be between 0 (inclusive) and 24 (exclusive).
+- `minutes` (number): the final number of minutes to start the stopwatch. The value must be between 0 (inclusive) and 60 (exclusive).
+- `seconds` (number): the final number of seconds to start the stopwatch. The value must be between 0 (inclusive) and 60 (exclusive).
 - `startPaused` (optional boolean): a boolean flag that determines whether the stopwatch should start in a paused state. Defaults to false.
 - `separator` (optional string): a string that specifies the separator to be used between days, hours, minutes, and seconds when the time is represented as a string. By default, colon (:) is used as a separator.
 
@@ -152,7 +152,7 @@ It returns an object with the following props:
   - `withoutLeadingZero`: a string indicating the remaining time without leading zeroes.
 - `pause`: a function that, when called, will pause the stopwatch.
 - `play`: a function that, when called, will resume (or start) the stopwatch.
-- `reset`: a function that, when called, will reset the stopwatch and the remaining time to their initial state/values.
+- `reset`: a function that, when called, will reset the stopwatch.
 - `togglePause`: a function that, when called, will toggle between pausing and playing the stopwatch.
 
 Example:
@@ -210,7 +210,7 @@ It returns an object with the following props:
 - `elapsedSeconds`: a number indicating the total elapsed time, calculated in seconds, since the stopwatch started.
 - `pause`: a function that, when called, will pause the stopwatch.
 - `play`: a function that, when called, will resume (or start) the stopwatch.
-- `reset`: a function that, when called, will reset the stopwatch and the remaining time to their initial state/values.
+- `reset`: a function that, when called, will reset the stopwatch.
 - `togglePause`: a function that, when called, will toggle between pausing and playing the stopwatch.
 
 Example:
@@ -246,26 +246,35 @@ export default ReactCounter;
 
 The useTimer hook provides timer functionality.
 
-It takes four arguments:
+It takes six arguments:
 
-- `hours`, `minutes`, and `seconds`: the inital time for the timer
-- `startPaused` (optional, by default is false): a boolean value indicating whether the timer should start in a paused state
+- `days` (number): the initial number of days to start the timer. It has to be equal to or greater than 0.
+- `hours` (number): the initial number of hours to start the timer. The value must be between 0 (inclusive) and 24 (exclusive).
+- `minutes` (number): the initial number of minutes to start the timer. The value must be between 0 (inclusive) and 60 (exclusive).
+- `seconds` (number): the initial number of seconds to start the timer. The value must be between 0 (inclusive) and 60 (exclusive).
+- `startPaused` (optional boolean): a boolean flag that determines whether the timer should start in a paused state. Defaults to false.
+- `separator` (optional string): a string that specifies the separator to be used between days, hours, minutes, and seconds when the time is represented as a string. By default, colon (:) is used as a separator.
 
 It returns an object with the following props:
 
-- `current`: the current value of the timer in the format "hh:mm:ss"
-- `isPaused`: a boolean value indicating whether the timer is currently paused or not
-- `isOver`: a boolean value indicating whether the timer is currently over or not
-- `currentHours`: a number indicating the current value of the hours on the timer
-- `currentMinutes`: a number indicating the current value of the minutes on the timer
-- `currentSeconds`: a number indicating the current value of the seconds on the timer
-- `elapsedSeconds`: a number indicating the seconds that have passed since the start of the timer
-- `remainingSeconds`: a number indicating the seconds that are left until the end of the timer
-- `elapsedTime`: the amount of time that has passed since the start of the timer in the format "hh:mm:ss"
-- `pause`: the function to pause the timer
-- `play`: the function to play the timer
-- `reset`: the function to reset the timer
-- `togglePause`: the function to toggle the pause
+- `current`: an object holding the current time of the timer in both leading zero and non-leading zero formats. This object has two properties:
+  - `withLeadingZero`: a string indicating the current time of the timer with leading zeroes where necessary.
+  - `withoutLeadingZero`: a string indicating the current time of the timer without leading zeros.
+- `isPaused`: a boolean value indicating if the timer is currently paused.
+- `isOver`: a boolean value indicating if the timer has finished running its course.
+- `currentDays`: a number indicating the current value of the days on the timer.
+- `currentHours`: a number indicating the current value of the hours on the timer.
+- `currentMinutes`: a number indicating the current value of the minutes on the timer.
+- `currentSeconds`: a number indicating the current value of the seconds on the timer.
+- `elapsedSeconds`: a number indicating the total elapsed time, calculated in seconds, since the timer started.
+- `remainingSeconds`: a number indicating the total remaining time, calculated in seconds, until the timer reaches the initially set time.
+- `elapsedTime`: analogous to the `current` object, this object holds the elapsed time in both formats:
+  - `withLeadingZero`: a string indicating the elapsed time with leading zeroes.
+  - `withoutLeadingZero`: a string indicating the elapsed time without leading zeroes.
+- `pause`: a function that, when called, will pause the timer.
+- `play`: a function that, when called, will resume (or start) the timer.
+- `reset`: a function that, when called, will reset the timer.
+- `togglePause`: a function that, when called, will toggle between pausing and playing the timer.
 
 Example:
 
@@ -273,23 +282,26 @@ Example:
 import { useTimer } from "final-countdown-js";
 
 const ReactCounter = () => {
-  const counter = useTimer(0, 10, 50);
+  const timer = useTimer(0, 10, 50);
 
   return (
     <div>
-      <p>Counter value: {counter.current}</p>
-      <p>Elapsed time: {counter.elapsedTime}</p>
-      <p>Hours: {counter.currentHours}</p>
-      <p>Minutes: {counter.currentMinutes}</p>
-      <p>Seconds: {counter.currentSeconds}</p>
-      <p>Elapsed seconds: {counter.elapsedSeconds}</p>
-      <p>Remaining seconds: {counter.remainingSeconds}</p>
-      <p>Is the counter paused? {counter.isPaused ? "Yes" : "No"}</p>
-      <p>Has the counter over? {counter.isOver ? "Yes" : "No"}</p>
-      <button onClick={counter.pause}>Pause</button>
-      <button onClick={counter.play}>Play</button>
-      <button onClick={counter.reset}>Reset</button>
-      <button onClick={counter.togglePause}>Toggle Pause</button>
+      <p>Timer value: {timer.current.withLeadingZero}</p>
+      <p>Timer value: {timer.current.withoutLeadingZero}</p>
+      <p>Elapsed time: {timer.elapsedTime.withLeadingZero}</p>
+      <p>Elapsed time: {timer.elapsedTime.withoutLeadingZero}</p>
+      <p>Days: {timer.currentDays}</p>
+      <p>Hours: {timer.currentHours}</p>
+      <p>Minutes: {timer.currentMinutes}</p>
+      <p>Seconds: {timer.currentSeconds}</p>
+      <p>Elapsed seconds: {timer.elapsedSeconds}</p>
+      <p>Remaining seconds: {timer.remainingSeconds}</p>
+      <p>Is the counter paused? {timer.isPaused ? "Yes" : "No"}</p>
+      <p>Has the counter over? {timer.isOver ? "Yes" : "No"}</p>
+      <button onClick={timer.pause}>Pause</button>
+      <button onClick={timer.play}>Play</button>
+      <button onClick={timer.reset}>Reset</button>
+      <button onClick={timer.togglePause}>Toggle Pause</button>
     </div>
   );
 };
