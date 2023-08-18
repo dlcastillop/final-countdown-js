@@ -26,21 +26,21 @@ The useCountDown hook provides a simple countdown timer functionality.
 
 It takes three arguments:
 
-- `min`: the minimum value of the countdown timer
-- `max`: the maximum value of the countdown timer
-- `startPaused` (optional, by default is false): a boolean value indicating whether the countdown timer should start in a paused state.
+- `min` (number): the initial value of the counter.
+- `max`(number): the final value of the counter. It has to be greater than `min`.
+- `startPaused` (optional boolean): a boolean flag that determines whether the counter should start in a paused state. Defaults to false.
 
 It returns an object with the following props:
 
-- `current`: an object with two props:
-  - `withLeadingZero`: a string with the current value of the counter with a leading zero
-  - `withoutLeadingZero`: a string with the current value of the counter without a leading zero
-- `isPaused`: a boolean value indicating whether the countdown timer is currently paused or not
-- `isOver`: a boolean value indicating whether the countdown timer is currently over or not
-- `pause`: the function to pause the countdown timer
-- `play`: the function to play the countdown timer
-- `reset`: the function to reset the countdown timer
-- `togglePause`: the function to toggle the pause
+- `current`: an object holding the current time of the counter in both leading zero and non-leading zero formats. This object has two properties:
+  - `withLeadingZero`: a string indicating the current time of the counter with leading zeroes where necessary.
+  - `withoutLeadingZero`: a string indicating the current time of the counter without leading zeros.
+- `isPaused`: a boolean value indicating if the counter is currently paused.
+- `isOver`: a boolean value indicating if the counter has finished running its course.
+- `pause`: a function that, when called, will pause the counter.
+- `play`: a function that, when called, will resume (or start) the counter.
+- `reset`: a function that, when called, will reset the counter.
+- `togglePause`: a function that, when called, will toggle between pausing and playing the counter.
 
 Example:
 
@@ -48,23 +48,18 @@ Example:
 import { useCountDown } from "final-countdown-js";
 
 const ReactCounter = () => {
-  const countDown = useCountDown(0, 10);
+  const counter = useCountDown(0, 10);
 
   return (
     <div>
-      <p>
-        Counter value with leading zero: {countDown.current.withLeadingZero}
-      </p>
-      <p>
-        Counter value without leading zero:{" "}
-        {countDown.current.withoutLeadingZero}
-      </p>
-      <p>Is the counter paused? {countDown.isPaused ? "Yes" : "No"}</p>
-      <p>Has the counter over? {countDown.isOver ? "Yes" : "No"}</p>
-      <button onClick={countDown.pause}>Pause</button>
-      <button onClick={countDown.play}>Play</button>
-      <button onClick={countDown.reset}>Reset</button>
-      <button onClick={countDown.togglePause}>Toggle Pause</button>
+      <p>Counter value: {counter.current.withLeadingZero}</p>
+      <p>Counter value: {counter.current.withoutLeadingZero}</p>
+      <p>Is the counter paused? {counter.isPaused ? "Yes" : "No"}</p>
+      <p>Has the counter over? {counter.isOver ? "Yes" : "No"}</p>
+      <button onClick={counter.pause}>Pause</button>
+      <button onClick={counter.play}>Play</button>
+      <button onClick={counter.reset}>Reset</button>
+      <button onClick={counter.togglePause}>Toggle Pause</button>
     </div>
   );
 };
