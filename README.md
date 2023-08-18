@@ -120,10 +120,10 @@ The useStopwatch hook provides stopwatch functionality with a limit.
 
 It takes six arguments:
 
-- `days` (number): the final number of days to start the stopwatch. It has to be equal to or greater than 0.
-- `hours` (number): the final number of hours to start the stopwatch. The value must be between 0 (inclusive) and 24 (exclusive).
-- `minutes` (number): the final number of minutes to start the stopwatch. The value must be between 0 (inclusive) and 60 (exclusive).
-- `seconds` (number): the final number of seconds to start the stopwatch. The value must be between 0 (inclusive) and 60 (exclusive).
+- `days` (number): the final number of days to end the stopwatch. It has to be equal to or greater than 0.
+- `hours` (number): the final number of hours to end the stopwatch. The value must be between 0 (inclusive) and 24 (exclusive).
+- `minutes` (number): the final number of minutes to end the stopwatch. The value must be between 0 (inclusive) and 60 (exclusive).
+- `seconds` (number): the final number of seconds to end the stopwatch. The value must be between 0 (inclusive) and 60 (exclusive).
 - `startPaused` (optional boolean): a boolean flag that determines whether the stopwatch should start in a paused state. Defaults to false.
 - `separator` (optional string): a string that specifies the separator to be used between days, hours, minutes, and seconds when the time is represented as a string. By default, colon (:) is used as a separator.
 
