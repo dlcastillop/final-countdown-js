@@ -71,23 +71,23 @@ export default ReactCounter;
 
 The useCountUp hook provides a simple countup timer functionality.
 
-It takes four arguments:
+It takes three arguments:
 
-- `min`: the minimum value of the countup timer
-- `max`: the maximum value of the countup timer
-- `startPaused` (optional, by default is false): a boolean value indicating whether the countup timer should start in a paused state
+- `min` (number): the initial value of the counter.
+- `max`(number): the final value of the counter. It has to be greater than `min`.
+- `startPaused` (optional boolean): a boolean flag that determines whether the counter should start in a paused state. Defaults to false.
 
 It returns an object with the following props:
 
-- `current`: an object with two props:
-  - `withLeadingZero`: a string with the current value of the counter with a leading zero
-  - `withoutLeadingZero`: a string with the current value of the counter without a leading zero
-- `isPaused`: a boolean value indicating whether the countup timer is currently paused or not
-- `isOver`: a boolean value indicating whether the countup timer is currently over or not
-- `pause`: the function to pause the countup timer
-- `play`: the function to play the countup timer
-- `reset`: the function to reset the countup timer
-- `togglePause`: the function to toggle the pause
+- `current`: an object holding the current time of the counter in both leading zero and non-leading zero formats. This object has two properties:
+  - `withLeadingZero`: a string indicating the current time of the counter with leading zeroes where necessary.
+  - `withoutLeadingZero`: a string indicating the current time of the counter without leading zeros.
+- `isPaused`: a boolean value indicating if the counter is currently paused.
+- `isOver`: a boolean value indicating if the counter has finished running its course.
+- `pause`: a function that, when called, will pause the counter.
+- `play`: a function that, when called, will resume (or start) the counter.
+- `reset`: a function that, when called, will reset the counter.
+- `togglePause`: a function that, when called, will toggle between pausing and playing the counter.
 
 Example:
 
@@ -95,20 +95,18 @@ Example:
 import { useCountUp } from "final-countdown-js";
 
 const ReactCounter = () => {
-  const countUp = useCountDown(0, 10);
+  const counter = useCountDown(0, 10);
 
   return (
     <div>
-      <p>Counter value with leading zero: {countUp.current.withLeadingZero}</p>
-      <p>
-        Counter value without leading zero: {countUp.current.withoutLeadingZero}
-      </p>
-      <p>Is the counter paused? {countUp.isPaused ? "Yes" : "No"}</p>
-      <p>Has the counter over? {countUp.isOver ? "Yes" : "No"}</p>
-      <button onClick={countUp.pause}>Pause</button>
-      <button onClick={countUp.play}>Play</button>
-      <button onClick={countUp.reset}>Reset</button>
-      <button onClick={countUp.togglePause}>Toggle Pause</button>
+      <p>Counter value: {counter.current.withLeadingZero}</p>
+      <p>Counter value: {counter.current.withoutLeadingZero}</p>
+      <p>Is the counter paused? {counter.isPaused ? "Yes" : "No"}</p>
+      <p>Has the counter over? {counter.isOver ? "Yes" : "No"}</p>
+      <button onClick={counter.pause}>Pause</button>
+      <button onClick={counter.play}>Play</button>
+      <button onClick={counter.reset}>Reset</button>
+      <button onClick={counter.togglePause}>Toggle Pause</button>
     </div>
   );
 };
