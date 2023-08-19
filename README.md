@@ -36,7 +36,7 @@ It returns an object with the following props:
   - `withLeadingZero`: a string indicating the current time of the counter with leading zeroes where necessary.
   - `withoutLeadingZero`: a string indicating the current time of the counter without leading zeros.
 - `isPaused`: a boolean value indicating if the counter is currently paused.
-- `isOver`: a boolean value indicating if the counter has finished running its course.
+- `isOver`: a boolean value indicating if the counter has finished running.
 - `pause`: a function that, when called, will pause the counter.
 - `play`: a function that, when called, will resume (or start) the counter.
 - `reset`: a function that, when called, will reset the counter.
@@ -83,7 +83,7 @@ It returns an object with the following props:
   - `withLeadingZero`: a string indicating the current time of the counter with leading zeroes where necessary.
   - `withoutLeadingZero`: a string indicating the current time of the counter without leading zeros.
 - `isPaused`: a boolean value indicating if the counter is currently paused.
-- `isOver`: a boolean value indicating if the counter has finished running its course.
+- `isOver`: a boolean value indicating if the counter has finished running.
 - `pause`: a function that, when called, will pause the counter.
 - `play`: a function that, when called, will resume (or start) the counter.
 - `reset`: a function that, when called, will reset the counter.
@@ -120,10 +120,10 @@ The useStopwatch hook provides stopwatch functionality with a limit.
 
 It takes six arguments:
 
-- `days` (number): the final number of days to end the stopwatch. It has to be equal to or greater than 0.
-- `hours` (number): the final number of hours to end the stopwatch. The value must be between 0 (inclusive) and 24 (exclusive).
-- `minutes` (number): the final number of minutes to end the stopwatch. The value must be between 0 (inclusive) and 60 (exclusive).
-- `seconds` (number): the final number of seconds to end the stopwatch. The value must be between 0 (inclusive) and 60 (exclusive).
+- `days` (number): the final value of the days. It has to be equal to or greater than 0.
+- `hours` (number): the final value of the hours. The value must be between 0 (inclusive) and 24 (exclusive).
+- `minutes` (number): the final value of the minutes. The value must be between 0 (inclusive) and 60 (exclusive).
+- `seconds` (number): the final value of the seconds. The value must be between 0 (inclusive) and 60 (exclusive).
 - `startPaused` (optional boolean): a boolean flag that determines whether the stopwatch should start in a paused state. Defaults to false.
 - `separator` (optional string): a string that specifies the separator to be used between days, hours, minutes, and seconds when the time is represented as a string. By default, colon (:) is used as a separator.
 
@@ -133,7 +133,7 @@ It returns an object with the following props:
   - `withLeadingZero`: a string indicating the current time of the stopwatch with leading zeroes where necessary.
   - `withoutLeadingZero`: a string indicating the current time of the stopwatch without leading zeros.
 - `isPaused`: a boolean value indicating if the stopwatch is currently paused.
-- `isOver`: a boolean value indicating if the stopwatch has finished running its course.
+- `isOver`: a boolean value indicating if the stopwatch has finished running.
 - `currentDays`: a number indicating the current value of the days on the stopwatch.
 - `currentHours`: a number indicating the current value of the hours on the stopwatch.
 - `currentMinutes`: a number indicating the current value of the minutes on the stopwatch.
@@ -241,10 +241,10 @@ The useTimer hook provides timer functionality.
 
 It takes six arguments:
 
-- `days` (number): the initial number of days to start the timer. It has to be equal to or greater than 0.
-- `hours` (number): the initial number of hours to start the timer. The value must be between 0 (inclusive) and 24 (exclusive).
-- `minutes` (number): the initial number of minutes to start the timer. The value must be between 0 (inclusive) and 60 (exclusive).
-- `seconds` (number): the initial number of seconds to start the timer. The value must be between 0 (inclusive) and 60 (exclusive).
+- `days` (number): the initial value of the days. It has to be equal to or greater than 0.
+- `hours` (number): the initial value of the hours. The value must be between 0 (inclusive) and 24 (exclusive).
+- `minutes` (number): the initial value of the minutes. The value must be between 0 (inclusive) and 60 (exclusive).
+- `seconds` (number): the initial value of the seconds. The value must be between 0 (inclusive) and 60 (exclusive).
 - `startPaused` (optional boolean): a boolean flag that determines whether the timer should start in a paused state. Defaults to false.
 - `separator` (optional string): a string that specifies the separator to be used between days, hours, minutes, and seconds when the time is represented as a string. By default, colon (:) is used as a separator.
 
@@ -254,7 +254,7 @@ It returns an object with the following props:
   - `withLeadingZero`: a string indicating the current time of the timer with leading zeroes where necessary.
   - `withoutLeadingZero`: a string indicating the current time of the timer without leading zeros.
 - `isPaused`: a boolean value indicating if the timer is currently paused.
-- `isOver`: a boolean value indicating if the timer has finished running its course.
+- `isOver`: a boolean value indicating if the timer has finished running.
 - `currentDays`: a number indicating the current value of the days on the timer.
 - `currentHours`: a number indicating the current value of the hours on the timer.
 - `currentMinutes`: a number indicating the current value of the minutes on the timer.
