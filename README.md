@@ -1,4 +1,4 @@
-# <img src="./public/logo.png" width="40" height="40" /> Final Countdown JS
+# <img src="https://github.com/dlcastillop/dlcastillop/blob/main/logos/final-countdown-js-logo.png" width="40" height="40" /> Final Countdown JS
 
 Final Countdown JS is a react hook library to handle all kinds of timers.
 
