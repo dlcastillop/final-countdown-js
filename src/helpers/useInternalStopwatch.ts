@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
-import { addLeadingZero } from ".";
-import { IInternalHooks } from "../interfaces";
+import { addLeadingZero } from "../helpers";
+import { IInternalStopwatch } from "../interfaces";
 
 export const useInternalStopwatch = (
   days: number,
@@ -9,15 +9,16 @@ export const useInternalStopwatch = (
   seconds: number,
   startPaused?: boolean,
   separator?: string
-): IInternalHooks => {
+): IInternalStopwatch => {
   const [time, setTime] = useState({
     days: 0,
     hours: 0,
     minutes: 0,
     seconds: 0,
   });
-  const paused = startPaused ?? false;
+  const [paused, setPaused] = useState(startPaused ?? false);
   const divider = separator ?? ":";
+  const [isOver, setIsOver] = useState(false);
 
   useEffect(() => {
     if (paused) {
@@ -58,6 +59,7 @@ export const useInternalStopwatch = (
       time.hours === hours &&
       time.days === days
     ) {
+      setIsOver(true);
       clearInterval(interval);
       return;
     }
@@ -74,8 +76,31 @@ export const useInternalStopwatch = (
       )}`,
       withoutLeadingZero: `${time.days}${divider}${time.hours}${divider}${time.minutes}${divider}${time.seconds}`,
     },
+    isPaused: paused,
+    isOver,
+    currentDays: time.days,
+    currentHours: time.hours,
+    currentMinutes: time.minutes,
+    currentSeconds: time.seconds,
+    elapsedSeconds:
+      time.days * 86400 + time.hours * 3600 + time.minutes * 60 + time.seconds,
+    remainingSeconds:
+      days * 86400 +
+      hours * 3600 +
+      minutes * 60 +
+      seconds -
+      (time.days * 86400 +
+        time.hours * 3600 +
+        time.minutes * 60 +
+        time.seconds),
+    pause: () => setPaused(true),
+    play: () => setPaused(false),
     reset: () => {
+      setIsOver(false);
       setTime({ days: 0, hours: 0, minutes: 0, seconds: 0 });
+    },
+    togglePause: () => {
+      setPaused(!paused);
     },
   };
 };

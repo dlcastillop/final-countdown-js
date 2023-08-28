@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
-import { addLeadingZero } from ".";
-import { IInternalHooks } from "../interfaces";
+import { addLeadingZero } from "../helpers";
+import { IInternalTimer } from "../interfaces";
 
 export const useInternalTimer = (
   days: number,
@@ -9,10 +9,27 @@ export const useInternalTimer = (
   seconds: number,
   startPaused?: boolean,
   separator?: string
-): IInternalHooks => {
+): IInternalTimer => {
+  if (days < 0) {
+    throw new Error("The days parameter has to be more or equal than 0.");
+  } else if (hours < 0 || hours >= 24) {
+    throw new Error(
+      "The hours parameter has to be more or equal than 0 and less than 24."
+    );
+  } else if (minutes < 0 || minutes >= 60) {
+    throw new Error(
+      "The minutes parameter has to be more or equal than 0 and less than 60."
+    );
+  } else if (seconds < 0 || seconds >= 60) {
+    throw new Error(
+      "The seconds parameter has to be more or equal than 0 and less than 60."
+    );
+  }
+
   const [time, setTime] = useState({ days, hours, minutes, seconds });
-  const paused = startPaused ?? false;
+  const [paused, setPaused] = useState(startPaused ?? false);
   const divider = separator ?? ":";
+  const [isOver, setIsOver] = useState(false);
 
   useEffect(() => {
     if (paused) {
@@ -55,6 +72,7 @@ export const useInternalTimer = (
       time.hours === 0 &&
       time.days === 0
     ) {
+      setIsOver(true);
       clearInterval(interval);
       return;
     }
@@ -71,8 +89,31 @@ export const useInternalTimer = (
       )}`,
       withoutLeadingZero: `${time.days}${divider}${time.hours}${divider}${time.minutes}${divider}${time.seconds}`,
     },
+    isPaused: paused,
+    isOver,
+    currentDays: time.days,
+    currentHours: time.hours,
+    currentMinutes: time.minutes,
+    currentSeconds: time.seconds,
+    elapsedSeconds:
+      days * 86400 +
+      hours * 3600 +
+      minutes * 60 +
+      seconds -
+      (time.days * 86400 +
+        time.hours * 3600 +
+        time.minutes * 60 +
+        time.seconds),
+    remainingSeconds:
+      time.days * 86400 + time.hours * 3600 + time.minutes * 60 + time.seconds,
+    pause: () => setPaused(true),
+    play: () => setPaused(false),
     reset: () => {
+      setIsOver(false);
       setTime({ days, hours, minutes, seconds });
+    },
+    togglePause: () => {
+      setPaused(!paused);
     },
   };
 };
