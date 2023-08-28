@@ -1,14 +1,14 @@
-import { useStopwatch } from "./hooks";
+import { useTimer } from "./hooks";
 
 const App = () => {
-  const stopwatch = useStopwatch(1, 0, 10, 50);
+  const stopwatch = useTimer(1, 0, 10, 50);
 
   return (
     <div>
       <p>Stopwatch value: {stopwatch.current.withLeadingZero}</p>
       <p>Stopwatch value: {stopwatch.current.withoutLeadingZero}</p>
-      <p>Remaining time: {stopwatch.remainingTime.withLeadingZero}</p>
-      <p>Remaining time: {stopwatch.remainingTime.withoutLeadingZero}</p>
+      <p>Remaining time: {stopwatch.elapsedTime.withLeadingZero}</p>
+      <p>Remaining time: {stopwatch.elapsedTime.withoutLeadingZero}</p>
       <p>Days: {stopwatch.currentDays}</p>
       <p>Hours: {stopwatch.currentHours}</p>
       <p>Minutes: {stopwatch.currentMinutes}</p>
