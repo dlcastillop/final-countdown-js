@@ -3,6 +3,15 @@ type IZero = {
   withoutLeadingZero: string;
 };
 
+interface IBaseCounterStatus {
+  currentDays: number;
+  currentHours: number;
+  currentMinutes: number;
+  currentSeconds: number;
+  elapsedSeconds: number;
+  remainingSeconds?: number;
+}
+
 export interface IBaseCounter {
   current: IZero;
   isPaused: boolean;
@@ -13,22 +22,10 @@ export interface IBaseCounter {
   togglePause: () => void;
 }
 
-export interface IStopwatch extends IBaseCounter {
-  currentDays: number;
-  currentHours: number;
-  currentMinutes: number;
-  currentSeconds: number;
-  elapsedSeconds: number;
-  remainingSeconds?: number;
+export interface IStopwatch extends IBaseCounter, IBaseCounterStatus {
   remainingTime?: IZero;
 }
 
-export interface ITimer extends IBaseCounter {
-  currentDays: number;
-  currentHours: number;
-  currentMinutes: number;
-  currentSeconds: number;
-  elapsedSeconds: number;
-  remainingSeconds: number;
+export interface ITimer extends IBaseCounter, IBaseCounterStatus {
   elapsedTime?: IZero;
 }
