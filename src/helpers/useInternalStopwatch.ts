@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { addLeadingZero } from "../helpers";
-import { IInternalStopwatch } from "../interfaces";
+import { IBaseStopwatch } from "../interfaces";
 
 export const useInternalStopwatch = (
   days: number,
@@ -9,7 +9,7 @@ export const useInternalStopwatch = (
   seconds: number,
   startPaused?: boolean,
   separator?: string
-): IInternalStopwatch => {
+): IBaseStopwatch => {
   const [time, setTime] = useState({
     days: 0,
     hours: 0,
