@@ -22,3 +22,13 @@ export interface IStopwatch extends IBaseCounter {
   remainingSeconds?: number;
   remainingTime?: IZero;
 }
+
+export interface ITimer extends IBaseCounter {
+  currentDays: number;
+  currentHours: number;
+  currentMinutes: number;
+  currentSeconds: number;
+  elapsedSeconds: number;
+  remainingSeconds: number;
+  elapsedTime?: IZero;
+}
