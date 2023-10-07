@@ -10,15 +10,15 @@ Final Countdown JS is a react hook library to handle all kinds of timers.
 
 You can use npm, yarn or pnpm to install Final Countdown JS.
 
-```
+```bash
 npm install final-countdown-js
 ```
 
-```
+```bash
 yarn add final-countdown-js
 ```
 
-```
+```bash
 pnpm install final-countdown-js
 ```
 
@@ -48,7 +48,7 @@ It returns an object with the following props:
 
 Example:
 
-```js
+```tsx
 import { useCountDown } from "final-countdown-js";
 
 const ReactCounter = () => {
@@ -95,7 +95,7 @@ It returns an object with the following props:
 
 Example:
 
-```js
+```tsx
 import { useCountUp } from "final-countdown-js";
 
 const ReactCounter = () => {
@@ -154,7 +154,7 @@ It returns an object with the following props:
 
 Example:
 
-```js
+```tsx
 import { useStopwatch } from "final-countdown-js";
 
 const ReactCounter = () => {
@@ -212,7 +212,7 @@ It returns an object with the following props:
 
 Example:
 
-```js
+```tsx
 import { useUnlimitedStopwatch } from "final-countdown-js";
 
 const ReactCounter = () => {
@@ -275,7 +275,7 @@ It returns an object with the following props:
 
 Example:
 
-```js
+```tsx
 import { useTimer } from "final-countdown-js";
 
 const ReactCounter = () => {
