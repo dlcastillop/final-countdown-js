@@ -1,7 +1,8 @@
-import IZero from "./IZero";
-
-export interface ICount {
-  current: IZero;
+export interface IBaseCounter {
+  current: {
+    withLeadingZero: string;
+    withoutLeadingZero: string;
+  };
   isPaused: boolean;
   isOver: boolean;
   pause: () => void;

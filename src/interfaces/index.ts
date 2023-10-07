@@ -1,4 +1,4 @@
-export * from "./ICount";
+export * from "./IBaseCounter";
 export * from "./IStopwatch";
 export * from "./IUnlimitedStopwatch";
 export * from "./ITimer";
