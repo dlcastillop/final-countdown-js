@@ -6,6 +6,8 @@ Final Countdown JS is a react hook library to handle all kinds of timers.
 
 <a href="https://www.producthunt.com/posts/final-countdown-js?utm_source=badge-featured&utm_medium=badge&utm_souce=badge-final&#0045;countdown&#0045;js" target="_blank"><img src="https://api.producthunt.com/widgets/embed-image/v1/featured.svg?post_id=410431&theme=neutral" alt="Final&#0032;Countdown&#0032;JS - A&#0032;react&#0032;hook&#0032;library&#0032;to&#0032;handle&#0032;all&#0032;kinds&#0032;of&#0032;timers | Product Hunt" style="width: 250px; height: 54px;" width="250" height="54" /></a>
 
+<script defer data-url="https://devhunt.org/tool/final-countdown-js" src="https://cdn.jsdelivr.net/gh/sidiDev/devhunt-banner/indexV0.js"></script>
+
 ## Installation
 
 You can use npm, yarn or pnpm to install Final Countdown JS.
