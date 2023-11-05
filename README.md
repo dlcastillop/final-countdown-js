@@ -318,4 +318,4 @@ If you're interested in contributing to Final Countdown JS, please read our [con
 
 ## Support
 
-Don't forget to leave a star!
+Don't forget to leave a star and [a review on Product Hunt!](https://www.producthunt.com/products/final-countdown-js/reviews/new)
