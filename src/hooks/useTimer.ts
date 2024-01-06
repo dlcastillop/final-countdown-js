@@ -1,5 +1,9 @@
-import { Timer } from "../interfaces";
+import { BaseCounter, BaseCounterStatus, Zero } from "../interfaces";
 import { useInternalStopwatch, useInternalTimer } from "../helpers";
+
+export interface Timer extends BaseCounter, BaseCounterStatus {
+  elapsedTime: Zero;
+}
 
 export const useTimer = (
   days: number,

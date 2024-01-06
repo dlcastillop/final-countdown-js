@@ -1,5 +1,9 @@
-import { Stopwatch } from "../interfaces";
+import { BaseCounter, BaseCounterStatus, Zero } from "../interfaces";
 import { useInternalStopwatch, useInternalTimer } from "../helpers";
+
+interface Stopwatch extends BaseCounter, BaseCounterStatus {
+  remainingTime: Zero;
+}
 
 export const useStopwatch = (
   days: number,
