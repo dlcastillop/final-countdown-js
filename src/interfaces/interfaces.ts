@@ -1,9 +1,9 @@
-type IZero = {
+type Zero = {
   withLeadingZero: string;
   withoutLeadingZero: string;
 };
 
-interface IBaseCounterStatus {
+interface BaseCounterStatus {
   currentDays: number;
   currentHours: number;
   currentMinutes: number;
@@ -12,8 +12,8 @@ interface IBaseCounterStatus {
   remainingSeconds: number;
 }
 
-export interface IBaseCounter {
-  current: IZero;
+export interface BaseCounter {
+  current: Zero;
   isPaused: boolean;
   isOver: boolean;
   pause: () => void;
@@ -22,18 +22,18 @@ export interface IBaseCounter {
   togglePause: () => void;
 }
 
-export interface IInternal extends IBaseCounter, IBaseCounterStatus {}
+export interface InternalCounter extends BaseCounter, BaseCounterStatus {}
 
-export interface IStopwatch extends IBaseCounter, IBaseCounterStatus {
-  remainingTime: IZero;
+export interface Stopwatch extends BaseCounter, BaseCounterStatus {
+  remainingTime: Zero;
 }
 
-export interface ITimer extends IBaseCounter, IBaseCounterStatus {
-  elapsedTime: IZero;
+export interface Timer extends BaseCounter, BaseCounterStatus {
+  elapsedTime: Zero;
 }
 
-export interface IUnlimitedStopwatch {
-  current: IZero;
+export interface UnlimitedStopwatch {
+  current: Zero;
   isPaused: boolean;
   currentDays: number;
   currentHours: number;
