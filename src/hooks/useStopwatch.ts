@@ -1,5 +1,9 @@
-import { IStopwatch } from "../interfaces";
+import { BaseCounter, BaseCounterStatus, Zero } from "../interfaces";
 import { useInternalStopwatch, useInternalTimer } from "../helpers";
+
+interface Stopwatch extends BaseCounter, BaseCounterStatus {
+  remainingTime: Zero;
+}
 
 export const useStopwatch = (
   days: number,
@@ -8,7 +12,7 @@ export const useStopwatch = (
   seconds: number,
   startPaused?: boolean,
   separator?: string
-): IStopwatch => {
+): Stopwatch => {
   if (days < 0) {
     throw new Error("The days parameter has to be more or equal than 0.");
   } else if (hours < 0 || hours >= 24) {

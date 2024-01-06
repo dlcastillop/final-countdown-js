@@ -1,5 +1,9 @@
-import { ITimer } from "../interfaces";
+import { BaseCounter, BaseCounterStatus, Zero } from "../interfaces";
 import { useInternalStopwatch, useInternalTimer } from "../helpers";
+
+export interface Timer extends BaseCounter, BaseCounterStatus {
+  elapsedTime: Zero;
+}
 
 export const useTimer = (
   days: number,
@@ -8,7 +12,7 @@ export const useTimer = (
   seconds: number,
   startPaused?: boolean,
   separator?: string
-): ITimer => {
+): Timer => {
   if (days < 0) {
     throw new Error("The days parameter has to be more or equal than 0.");
   } else if (hours < 0 || hours >= 24) {

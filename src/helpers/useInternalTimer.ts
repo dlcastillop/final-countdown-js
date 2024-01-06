@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { addLeadingZero } from "../helpers";
-import { IInternal } from "../interfaces";
+import { InternalCounter } from "../interfaces";
 
 export const useInternalTimer = (
   days: number,
@@ -9,7 +9,7 @@ export const useInternalTimer = (
   seconds: number,
   startPaused?: boolean,
   separator?: string
-): IInternal => {
+): InternalCounter => {
   if (days < 0) {
     throw new Error("The days parameter has to be more or equal than 0.");
   } else if (hours < 0 || hours >= 24) {

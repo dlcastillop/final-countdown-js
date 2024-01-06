@@ -1,11 +1,25 @@
 import { useState, useEffect } from "react";
 import { addLeadingZero } from "../helpers";
-import { IUnlimitedStopwatch } from "../interfaces";
+import { Zero } from "../interfaces";
+
+interface UnlimitedStopwatch {
+  current: Zero;
+  isPaused: boolean;
+  currentDays: number;
+  currentHours: number;
+  currentMinutes: number;
+  currentSeconds: number;
+  elapsedSeconds: number;
+  pause: () => void;
+  play: () => void;
+  reset: () => void;
+  togglePause: () => void;
+}
 
 export const useUnlimitedStopwatch = (
   startPaused?: boolean,
   separator?: string
-): IUnlimitedStopwatch => {
+): UnlimitedStopwatch => {
   const [time, setTime] = useState({
     days: 0,
     hours: 0,
