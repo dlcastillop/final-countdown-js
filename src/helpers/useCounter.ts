@@ -12,7 +12,7 @@ export const useCounter = (
     throw new Error("The min parameter has to be less than the max parameter.");
   }
 
-  const [count, setCount] = useState(max);
+  const [count, setCount] = useState(isCountingUp ? min : max);
   const [paused, setPaused] = useState(startPaused ?? false);
   const [isOver, setIsOver] = useState(false);
 
@@ -47,7 +47,7 @@ export const useCounter = (
     play: () => setPaused(false),
     reset: () => {
       setIsOver(false);
-      setCount(max);
+      setCount(isCountingUp ? min : max);
     },
     togglePause: () => {
       setPaused(!paused);
