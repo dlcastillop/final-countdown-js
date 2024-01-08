@@ -45,14 +45,10 @@
   },
   "exports": {
     ".": {
-      "import": {
-        "default": "./dist/final-countdown-js.es.js",
-        "types": "./dist/final-countdown-js.d.ts"
-      },
-      "require": {
-        "default": "./dist/final-countdown-js.umd.js",
-        "types": "./dist/final-countdown-js.d.ts"
-      }
+      "import": "./dist/final-countdown-js.es.js",
+      "require": "./dist/final-countdown-js.umd.js",
+      "types": "./dist/final-countdown-js.d.ts",
+      "default": "./dist/final-countdown-js.es.js"
     }
   },
   "files": [
