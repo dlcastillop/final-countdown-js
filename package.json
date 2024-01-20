@@ -12,10 +12,10 @@
     "counter",
     "counters"
   ],
-  "author": "Daniel Castillo",
+  "author": "Daniel Castillo <daniel@dlcastillop.com",
   "license": "MIT",
   "private": false,
-  "version": "1.4.0",
+  "version": "1.4.1",
   "type": "module",
   "main": "dist/final-countdown-js.umd.js",
   "module": "dist/final-countdown-js.es.js",
