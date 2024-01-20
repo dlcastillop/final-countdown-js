@@ -54,18 +54,19 @@ Example:
 import { useCountDown } from "final-countdown-js";
 
 const ReactCounter = () => {
-  const counter = useCountDown(0, 10);
+  const { current, isPaused, isOver, pause, play, reset, togglePause } =
+    useCountDown(0, 10);
 
   return (
     <div>
-      <p>Counter value: {counter.current.withLeadingZero}</p>
-      <p>Counter value: {counter.current.withoutLeadingZero}</p>
-      <p>Is the counter paused? {counter.isPaused ? "Yes" : "No"}</p>
-      <p>Has the counter over? {counter.isOver ? "Yes" : "No"}</p>
-      <button onClick={counter.pause}>Pause</button>
-      <button onClick={counter.play}>Play</button>
-      <button onClick={counter.reset}>Reset</button>
-      <button onClick={counter.togglePause}>Toggle Pause</button>
+      <p>Counter value: {current.withLeadingZero}</p>
+      <p>Counter value: {current.withoutLeadingZero}</p>
+      <p>Is the counter paused? {isPaused ? "Yes" : "No"}</p>
+      <p>Has the counter over? {isOver ? "Yes" : "No"}</p>
+      <button onClick={pause}>Pause</button>
+      <button onClick={play}>Play</button>
+      <button onClick={reset}>Reset</button>
+      <button onClick={togglePause}>Toggle Pause</button>
     </div>
   );
 };
@@ -101,18 +102,19 @@ Example:
 import { useCountUp } from "final-countdown-js";
 
 const ReactCounter = () => {
-  const counter = useCountDown(0, 10);
+  const { current, isPaused, isOver, pause, play, reset, togglePause } =
+    useCountDown(0, 10);
 
   return (
     <div>
-      <p>Counter value: {counter.current.withLeadingZero}</p>
-      <p>Counter value: {counter.current.withoutLeadingZero}</p>
-      <p>Is the counter paused? {counter.isPaused ? "Yes" : "No"}</p>
-      <p>Has the counter over? {counter.isOver ? "Yes" : "No"}</p>
-      <button onClick={counter.pause}>Pause</button>
-      <button onClick={counter.play}>Play</button>
-      <button onClick={counter.reset}>Reset</button>
-      <button onClick={counter.togglePause}>Toggle Pause</button>
+      <p>Counter value: {current.withLeadingZero}</p>
+      <p>Counter value: {current.withoutLeadingZero}</p>
+      <p>Is the counter paused? {isPaused ? "Yes" : "No"}</p>
+      <p>Has the counter over? {isOver ? "Yes" : "No"}</p>
+      <button onClick={pause}>Pause</button>
+      <button onClick={play}>Play</button>
+      <button onClick={reset}>Reset</button>
+      <button onClick={togglePause}>Toggle Pause</button>
     </div>
   );
 };
@@ -160,26 +162,41 @@ Example:
 import { useStopwatch } from "final-countdown-js";
 
 const ReactCounter = () => {
-  const stopwatch = useStopwatch(1, 0, 10, 50);
+  const {
+    current,
+    remainingTime,
+    currentDays,
+    currentHours,
+    currentMinutes,
+    currentSeconds,
+    elapsedSeconds,
+    remainingSeconds,
+    isPaused,
+    isOver,
+    pause,
+    play,
+    reset,
+    togglePause,
+  } = useStopwatch(1, 0, 10, 50);
 
   return (
     <div>
-      <p>Stopwatch value: {stopwatch.current.withLeadingZero}</p>
-      <p>Stopwatch value: {stopwatch.current.withoutLeadingZero}</p>
-      <p>Remaining time: {stopwatch.remainingTime.withLeadingZero}</p>
-      <p>Remaining time: {stopwatch.remainingTime.withoutLeadingZero}</p>
-      <p>Days: {stopwatch.currentDays}</p>
-      <p>Hours: {stopwatch.currentHours}</p>
-      <p>Minutes: {stopwatch.currentMinutes}</p>
-      <p>Seconds: {stopwatch.currentSeconds}</p>
-      <p>Elapsed seconds: {stopwatch.elapsedSeconds}</p>
-      <p>Remaining seconds: {stopwatch.remainingSeconds}</p>
-      <p>Is the counter paused? {stopwatch.isPaused ? "Yes" : "No"}</p>
-      <p>Has the counter over? {stopwatch.isOver ? "Yes" : "No"}</p>
-      <button onClick={stopwatch.pause}>Pause</button>
-      <button onClick={stopwatch.play}>Play</button>
-      <button onClick={stopwatch.reset}>Reset</button>
-      <button onClick={stopwatch.togglePause}>Toggle Pause</button>
+      <p>Stopwatch value: {current.withLeadingZero}</p>
+      <p>Stopwatch value: {current.withoutLeadingZero}</p>
+      <p>Remaining time: {remainingTime.withLeadingZero}</p>
+      <p>Remaining time: {remainingTime.withoutLeadingZero}</p>
+      <p>Days: {currentDays}</p>
+      <p>Hours: {currentHours}</p>
+      <p>Minutes: {currentMinutes}</p>
+      <p>Seconds: {currentSeconds}</p>
+      <p>Elapsed seconds: {elapsedSeconds}</p>
+      <p>Remaining seconds: {remainingSeconds}</p>
+      <p>Is the counter paused? {isPaused ? "Yes" : "No"}</p>
+      <p>Has the counter over? {isOver ? "Yes" : "No"}</p>
+      <button onClick={pause}>Pause</button>
+      <button onClick={play}>Play</button>
+      <button onClick={reset}>Reset</button>
+      <button onClick={togglePause}>Toggle Pause</button>
     </div>
   );
 };
@@ -218,22 +235,34 @@ Example:
 import { useUnlimitedStopwatch } from "final-countdown-js";
 
 const ReactCounter = () => {
-  const stopwatch = useUnlimitedStopwatch();
+  const {
+    current,
+    currentDays,
+    currentHours,
+    currentMinutes,
+    currentSeconds,
+    elapsedSeconds,
+    isPaused,
+    pause,
+    play,
+    reset,
+    togglePause,
+  } = useUnlimitedStopwatch();
 
   return (
     <div>
-      <p>Counter value: {stopwatch.current.withLeadingZero}</p>
-      <p>Counter value: {stopwatch.current.withoutLeadingZero}</p>
-      <p>Days: {stopwatch.currentDays}</p>
-      <p>Hours: {stopwatch.currentHours}</p>
-      <p>Minutes: {stopwatch.currentMinutes}</p>
-      <p>Seconds: {stopwatch.currentSeconds}</p>
-      <p>Elapsed seconds: {stopwatch.elapsedSeconds}</p>
-      <p>Is the counter paused? {stopwatch.isPaused ? "Yes" : "No"}</p>
-      <button onClick={stopwatch.pause}>Pause</button>
-      <button onClick={stopwatch.play}>Play</button>
-      <button onClick={stopwatch.reset}>Reset</button>
-      <button onClick={stopwatch.togglePause}>Toggle Pause</button>
+      <p>Counter value: {current.withLeadingZero}</p>
+      <p>Counter value: {current.withoutLeadingZero}</p>
+      <p>Days: {currentDays}</p>
+      <p>Hours: {currentHours}</p>
+      <p>Minutes: {currentMinutes}</p>
+      <p>Seconds: {currentSeconds}</p>
+      <p>Elapsed seconds: {elapsedSeconds}</p>
+      <p>Is the counter paused? {isPaused ? "Yes" : "No"}</p>
+      <button onClick={pause}>Pause</button>
+      <button onClick={play}>Play</button>
+      <button onClick={reset}>Reset</button>
+      <button onClick={togglePause}>Toggle Pause</button>
     </div>
   );
 };
@@ -281,26 +310,41 @@ Example:
 import { useTimer } from "final-countdown-js";
 
 const ReactCounter = () => {
-  const timer = useTimer(0, 10, 50);
+  const {
+    current,
+    elapsedTime,
+    currentDays,
+    currentHours,
+    currentMinutes,
+    currentSeconds,
+    elapsedSeconds,
+    remainingSeconds,
+    isPaused,
+    isOver,
+    pause,
+    play,
+    reset,
+    togglePause,
+  } = useTimer(0, 10, 50);
 
   return (
     <div>
-      <p>Timer value: {timer.current.withLeadingZero}</p>
-      <p>Timer value: {timer.current.withoutLeadingZero}</p>
-      <p>Elapsed time: {timer.elapsedTime.withLeadingZero}</p>
-      <p>Elapsed time: {timer.elapsedTime.withoutLeadingZero}</p>
-      <p>Days: {timer.currentDays}</p>
-      <p>Hours: {timer.currentHours}</p>
-      <p>Minutes: {timer.currentMinutes}</p>
-      <p>Seconds: {timer.currentSeconds}</p>
-      <p>Elapsed seconds: {timer.elapsedSeconds}</p>
-      <p>Remaining seconds: {timer.remainingSeconds}</p>
-      <p>Is the counter paused? {timer.isPaused ? "Yes" : "No"}</p>
-      <p>Has the counter over? {timer.isOver ? "Yes" : "No"}</p>
-      <button onClick={timer.pause}>Pause</button>
-      <button onClick={timer.play}>Play</button>
-      <button onClick={timer.reset}>Reset</button>
-      <button onClick={timer.togglePause}>Toggle Pause</button>
+      <p>Timer value: {current.withLeadingZero}</p>
+      <p>Timer value: {current.withoutLeadingZero}</p>
+      <p>Elapsed time: {elapsedTime.withLeadingZero}</p>
+      <p>Elapsed time: {elapsedTime.withoutLeadingZero}</p>
+      <p>Days: {currentDays}</p>
+      <p>Hours: {currentHours}</p>
+      <p>Minutes: {currentMinutes}</p>
+      <p>Seconds: {currentSeconds}</p>
+      <p>Elapsed seconds: {elapsedSeconds}</p>
+      <p>Remaining seconds: {remainingSeconds}</p>
+      <p>Is the counter paused? {isPaused ? "Yes" : "No"}</p>
+      <p>Has the counter over? {isOver ? "Yes" : "No"}</p>
+      <button onClick={pause}>Pause</button>
+      <button onClick={play}>Play</button>
+      <button onClick={reset}>Reset</button>
+      <button onClick={togglePause}>Toggle Pause</button>
     </div>
   );
 };
