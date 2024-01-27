@@ -5,7 +5,7 @@ import {
   handleTimerErrors,
 } from "../helpers";
 
-export interface Timer extends BaseCounter, BaseCounterStatus {
+interface Timer extends BaseCounter, BaseCounterStatus {
   elapsedTime: Zero;
 }
 
@@ -15,7 +15,8 @@ export const useTimer = (
   minutes: number,
   seconds: number,
   startPaused?: boolean,
-  separator?: string
+  separator?: string,
+  onFinish?: () => void
 ): Timer => {
   handleTimerErrors(days, hours, minutes, seconds);
 
@@ -25,7 +26,8 @@ export const useTimer = (
     minutes,
     seconds,
     startPaused,
-    separator
+    separator,
+    onFinish
   );
   const stopwatch = useInternalStopwatch(
     days,

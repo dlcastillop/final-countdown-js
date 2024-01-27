@@ -35,6 +35,7 @@ It takes three arguments:
 - `min` (number): the initial value of the counter.
 - `max`(number): the final value of the counter. It has to be greater than `min`.
 - `startPaused` (optional boolean): a boolean flag that determines whether the counter should start in a paused state. Defaults to false.
+- `onFinish` (optional function): a function that will be called when the counter reaches the final value.
 
 It returns an object with the following props:
 
@@ -83,6 +84,7 @@ It takes three arguments:
 - `min` (number): the initial value of the counter.
 - `max`(number): the final value of the counter. It has to be greater than `min`.
 - `startPaused` (optional boolean): a boolean flag that determines whether the counter should start in a paused state. Defaults to false.
+- `onFinish` (optional function): a function that will be called when the counter reaches the final value.
 
 It returns an object with the following props:
 
@@ -134,6 +136,7 @@ It takes six arguments:
 - `seconds` (number): the final value of the seconds. The value must be between 0 (inclusive) and 60 (exclusive).
 - `startPaused` (optional boolean): a boolean flag that determines whether the stopwatch should start in a paused state. Defaults to false.
 - `separator` (optional string): a string that specifies the separator to be used between days, hours, minutes, and seconds when the time is represented as a string. By default, colon (:) is used as a separator.
+- `onFinish` (optional function): a function that will be called when the stopwatch reaches the final value.
 
 It returns an object with the following props:
 
@@ -282,6 +285,7 @@ It takes six arguments:
 - `seconds` (number): the initial value of the seconds. The value must be between 0 (inclusive) and 60 (exclusive).
 - `startPaused` (optional boolean): a boolean flag that determines whether the timer should start in a paused state. Defaults to false.
 - `separator` (optional string): a string that specifies the separator to be used between days, hours, minutes, and seconds when the time is represented as a string. By default, colon (:) is used as a separator.
+- `onFinish` (optional function): a function that will be called when the timer reaches the final value.
 
 It returns an object with the following props:
 

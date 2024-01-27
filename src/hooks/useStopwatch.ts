@@ -15,7 +15,8 @@ export const useStopwatch = (
   minutes: number,
   seconds: number,
   startPaused?: boolean,
-  separator?: string
+  separator?: string,
+  onFinish?: () => void
 ): Stopwatch => {
   handleTimerErrors(days, hours, minutes, seconds);
 
@@ -25,7 +26,8 @@ export const useStopwatch = (
     minutes,
     seconds,
     startPaused,
-    separator
+    separator,
+    onFinish
   );
   const timer = useInternalTimer(
     days,
