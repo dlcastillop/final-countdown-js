@@ -5,7 +5,7 @@ import {
   handleTimerErrors,
 } from "../helpers";
 
-export interface Timer extends BaseCounter, BaseCounterStatus {
+interface Timer extends BaseCounter, BaseCounterStatus {
   elapsedTime: Zero;
 }
 
