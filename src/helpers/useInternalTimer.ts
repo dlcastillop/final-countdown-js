@@ -8,7 +8,8 @@ export const useInternalTimer = (
   minutes: number,
   seconds: number,
   startPaused?: boolean,
-  separator?: string
+  separator?: string,
+  onFinish?: () => void
 ): InternalCounter => {
   const [time, setTime] = useState({ days, hours, minutes, seconds });
   const [paused, setPaused] = useState(startPaused ?? false);
@@ -63,6 +64,10 @@ export const useInternalTimer = (
 
     return () => clearInterval(interval);
   }, [days, hours, minutes, seconds, time, paused]);
+
+  useEffect(() => {
+    isOver && onFinish && onFinish();
+  }, [isOver]);
 
   return {
     current: {
