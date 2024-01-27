@@ -8,7 +8,8 @@ export const useInternalStopwatch = (
   minutes: number,
   seconds: number,
   startPaused?: boolean,
-  separator?: string
+  separator?: string,
+  onFinish?: () => void
 ): InternalCounter => {
   const [time, setTime] = useState({
     days: 0,
@@ -66,6 +67,10 @@ export const useInternalStopwatch = (
 
     return () => clearInterval(interval);
   }, [days, hours, minutes, seconds, time, paused]);
+
+  useEffect(() => {
+    isOver && onFinish && onFinish();
+  }, [isOver]);
 
   return {
     current: {
