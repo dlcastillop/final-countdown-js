@@ -3,6 +3,7 @@ import {
   useInternalStopwatch,
   useInternalTimer,
   handleTimerErrors,
+  parseTime,
 } from "../helpers";
 
 interface Timer extends BaseCounter, BaseCounterStatus {
@@ -19,6 +20,7 @@ export const useTimer = (
   onFinish?: () => void
 ): Timer => {
   handleTimerErrors(days, hours, minutes, seconds);
+  parseTime("2:3:-4:3");
 
   const timer = useInternalTimer(
     days,
