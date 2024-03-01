@@ -1,3 +1,8 @@
+export interface BaseOptions {
+  startPaused?: boolean;
+  onFinish?: () => void;
+}
+
 export type Zero = {
   withLeadingZero: string;
   withoutLeadingZero: string;
