@@ -7,6 +7,10 @@ export interface ExtendedOptions extends BaseOptions {
   separator?: string;
 }
 
+export interface StopwatchOptions extends ExtendedOptions {
+  endTime?: string;
+}
+
 export type Zero = {
   withLeadingZero: string;
   withoutLeadingZero: string;

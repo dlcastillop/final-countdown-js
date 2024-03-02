@@ -15,7 +15,7 @@ export const useTimer = (
   options?: ExtendedOptions
 ): Timer => {
   const timer = useInternalTimer(startTime, { ...options });
-  const stopwatch = useInternalStopwatch(startTime, { ...options });
+  const stopwatch = useInternalStopwatch({ ...options, endTime: startTime });
 
   return {
     ...timer,
