@@ -1,10 +1,10 @@
 import { useState, useEffect } from "react";
 import { addLeadingZero, parseTime } from "../helpers";
-import { InternalCounter, ExtendedOptions } from "../interfaces";
+import { InternalCounter, TimerOptions } from "../interfaces";
 
 export const useInternalTimer = (
   startTime: string,
-  options: ExtendedOptions
+  options: TimerOptions
 ): InternalCounter => {
   const { days, hours, minutes, seconds } = parseTime(startTime);
   const { startPaused, separator, onFinish } = options;

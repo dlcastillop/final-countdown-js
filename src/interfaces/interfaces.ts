@@ -1,13 +1,13 @@
-export interface BaseOptions {
+export interface BaseCounterOptions {
   startPaused?: boolean;
   onFinish?: () => void;
 }
 
-export interface ExtendedOptions extends BaseOptions {
+export interface TimerOptions extends BaseCounterOptions {
   separator?: string;
 }
 
-export interface StopwatchOptions extends ExtendedOptions {
+export interface StopwatchOptions extends TimerOptions {
   endTime?: string;
 }
 

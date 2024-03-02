@@ -2,7 +2,7 @@ import {
   BaseCounter,
   BaseCounterStatus,
   Zero,
-  ExtendedOptions,
+  TimerOptions,
 } from "../interfaces";
 import { useInternalStopwatch, useInternalTimer } from "../helpers";
 
@@ -10,10 +10,7 @@ interface Timer extends BaseCounter, BaseCounterStatus {
   elapsedTime: Zero;
 }
 
-export const useTimer = (
-  startTime: string,
-  options?: ExtendedOptions
-): Timer => {
+export const useTimer = (startTime: string, options?: TimerOptions): Timer => {
   const timer = useInternalTimer(startTime, { ...options });
   const stopwatch = useInternalStopwatch({ ...options, endTime: startTime });
 
