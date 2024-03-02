@@ -3,6 +3,10 @@ export interface BaseOptions {
   onFinish?: () => void;
 }
 
+export interface ExtendedOptions extends BaseOptions {
+  separator?: string;
+}
+
 export type Zero = {
   withLeadingZero: string;
   withoutLeadingZero: string;

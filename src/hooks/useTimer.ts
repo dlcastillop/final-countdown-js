@@ -1,44 +1,18 @@
-import { BaseCounter, BaseCounterStatus, Zero } from "../interfaces";
 import {
-  useInternalStopwatch,
-  useInternalTimer,
-  handleTimerErrors,
-  parseTime,
-} from "../helpers";
+  BaseCounter,
+  BaseCounterStatus,
+  Zero,
+  ExtendedOptions,
+} from "../interfaces";
+import { useInternalStopwatch, useInternalTimer } from "../helpers";
 
 interface Timer extends BaseCounter, BaseCounterStatus {
   elapsedTime: Zero;
 }
 
-export const useTimer = (
-  days: number,
-  hours: number,
-  minutes: number,
-  seconds: number,
-  startPaused?: boolean,
-  separator?: string,
-  onFinish?: () => void
-): Timer => {
-  handleTimerErrors(days, hours, minutes, seconds);
-  parseTime("2:3:-4:3");
-
-  const timer = useInternalTimer(
-    days,
-    hours,
-    minutes,
-    seconds,
-    startPaused,
-    separator,
-    onFinish
-  );
-  const stopwatch = useInternalStopwatch(
-    days,
-    hours,
-    minutes,
-    seconds,
-    startPaused,
-    separator
-  );
+export const useTimer = (endTime: string, options?: ExtendedOptions): Timer => {
+  const timer = useInternalTimer(endTime, { ...options });
+  const stopwatch = useInternalStopwatch(endTime, { ...options });
 
   return {
     ...timer,

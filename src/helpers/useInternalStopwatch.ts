@@ -1,16 +1,13 @@
 import { useState, useEffect } from "react";
-import { addLeadingZero } from "../helpers";
-import { InternalCounter } from "../interfaces";
+import { addLeadingZero, parseTime } from "../helpers";
+import { InternalCounter, ExtendedOptions } from "../interfaces";
 
 export const useInternalStopwatch = (
-  days: number,
-  hours: number,
-  minutes: number,
-  seconds: number,
-  startPaused?: boolean,
-  separator?: string,
-  onFinish?: () => void
+  startTime: string,
+  options: ExtendedOptions
 ): InternalCounter => {
+  const { days, hours, minutes, seconds } = parseTime(startTime);
+  const { startPaused, separator, onFinish } = options;
   const [time, setTime] = useState({
     days: 0,
     hours: 0,
