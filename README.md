@@ -136,15 +136,13 @@ export default ReactCounter;
 
 The useStopwatch hook provides stopwatch functionality with a limit.
 
-It takes six arguments:
+It takes one argument:
 
-- `days` (number): the final value of the days. It has to be equal to or greater than 0.
-- `hours` (number): the final value of the hours. The value must be between 0 (inclusive) and 24 (exclusive).
-- `minutes` (number): the final value of the minutes. The value must be between 0 (inclusive) and 60 (exclusive).
-- `seconds` (number): the final value of the seconds. The value must be between 0 (inclusive) and 60 (exclusive).
-- `startPaused` (optional boolean): a boolean flag that determines whether the stopwatch should start in a paused state. Defaults to false.
-- `separator` (optional string): a string that specifies the separator to be used between days, hours, minutes, and seconds when the time is represented as a string. By default, colon (:) is used as a separator.
-- `onFinish` (optional function): a function that will be called when the stopwatch reaches the final value.
+- `options`(optional object): the options for the stopwatch.
+  - `endTime` (options string): specifies the time when the stopwatch will stop. It must be in the `dd:hh:mm:ss` format. If it is not specified, the stopwatch will not end.
+  - `startPaused` (optional boolean): determines whether the stopwatch should start in a paused state. Defaults to false.
+  - `onFinish` (optional function): a function that will be called when the stopwatch reaches the final value.
+  - `separator` (optional string): specifies the separator to be used between days, hours, minutes, and seconds when the time is represented as a string. By default, colon (:) is used as a separator.
 
 It returns an object with the following props:
 
@@ -158,10 +156,10 @@ It returns an object with the following props:
 - `currentMinutes`: a number indicating the current value of the minutes on the stopwatch.
 - `currentSeconds`: a number indicating the current value of the seconds on the stopwatch.
 - `elapsedSeconds`: a number indicating the total elapsed time, calculated in seconds, since the stopwatch started.
-- `remainingSeconds`: a number indicating the total remaining time, calculated in seconds, until the stopwatch reaches the initially set time.
+- `remainingSeconds`: a number indicating the total remaining time, calculated in seconds, until the stopwatch reaches the initially set time. If the `endTime` is not specified, it will always be 0.
 - `remainingTime`: analogous to the `current` object, this object holds the remaining time in both formats:
-  - `withLeadingZero`: a string indicating the remaining time with leading zeroes.
-  - `withoutLeadingZero`: a string indicating the remaining time without leading zeroes.
+  - `withLeadingZero`: a string indicating the remaining time with leading zeroes. If the `endTime` is not specified, it will always be 00:00:00:00.
+  - `withoutLeadingZero`: a string indicating the remaining time without leading zeroes. If the `endTime` is not specified, it will always be 0:0:0:0.
 - `pause`: a function that, when called, will pause the stopwatch.
 - `play`: a function that, when called, will resume (or start) the stopwatch.
 - `reset`: a function that, when called, will reset the stopwatch.

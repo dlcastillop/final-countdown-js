@@ -16,9 +16,7 @@ const App = () => {
     play,
     reset,
     togglePause,
-  } = useStopwatch({
-    endTime: "00:00:10:03",
-  });
+  } = useStopwatch();
 
   return (
     <div>
