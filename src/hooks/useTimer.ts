@@ -10,9 +10,12 @@ interface Timer extends BaseCounter, BaseCounterStatus {
   elapsedTime: Zero;
 }
 
-export const useTimer = (endTime: string, options?: ExtendedOptions): Timer => {
-  const timer = useInternalTimer(endTime, { ...options });
-  const stopwatch = useInternalStopwatch(endTime, { ...options });
+export const useTimer = (
+  startTime: string,
+  options?: ExtendedOptions
+): Timer => {
+  const timer = useInternalTimer(startTime, { ...options });
+  const stopwatch = useInternalStopwatch(startTime, { ...options });
 
   return {
     ...timer,

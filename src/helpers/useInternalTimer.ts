@@ -3,10 +3,10 @@ import { addLeadingZero, parseTime } from "../helpers";
 import { InternalCounter, ExtendedOptions } from "../interfaces";
 
 export const useInternalTimer = (
-  endTime: string,
+  startTime: string,
   options: ExtendedOptions
 ): InternalCounter => {
-  const { days, hours, minutes, seconds } = parseTime(endTime);
+  const { days, hours, minutes, seconds } = parseTime(startTime);
   const { startPaused, separator, onFinish } = options;
   const [time, setTime] = useState({ days, hours, minutes, seconds });
   const [paused, setPaused] = useState(startPaused ?? false);
