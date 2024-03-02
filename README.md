@@ -35,7 +35,7 @@ It takes three arguments:
 - `min` (number): the initial value of the counter.
 - `max`(number): the final value of the counter. It has to be greater than `min`.
 - `options`(optional object): the options for the counter.
-  - `startPaused` (optional boolean): a boolean flag that determines whether the counter should start in a paused state. Defaults to false.
+  - `startPaused` (optional boolean): determines whether the counter should start in a paused state. Defaults to false.
   - `onFinish` (optional function): a function that will be called when the counter reaches the final value.
 
 It returns an object with the following props:
@@ -88,7 +88,7 @@ It takes three arguments:
 - `min` (number): the initial value of the counter.
 - `max`(number): the final value of the counter. It has to be greater than `min`.
 - `options`(optional object): the options for the counter.
-  - `startPaused` (optional boolean): a boolean flag that determines whether the counter should start in a paused state. Defaults to false.
+  - `startPaused` (optional boolean): determines whether the counter should start in a paused state. Defaults to false.
   - `onFinish` (optional function): a function that will be called when the counter reaches the final value.
 
 It returns an object with the following props:
@@ -134,12 +134,12 @@ export default ReactCounter;
 
 ### useStopwatch
 
-The useStopwatch hook provides stopwatch functionality with a limit.
+The useStopwatch hook provides stopwatch functionality with or without a limit.
 
 It takes one argument:
 
 - `options`(optional object): the options for the stopwatch.
-  - `endTime` (options string): specifies the time when the stopwatch will stop. It must be in the `dd:hh:mm:ss` format. If it is not specified, the stopwatch will not end.
+  - `endTime` (options string): specifies the time at which the stopwatch will stop. It must be in `dd:hh:mm:ss` format. If not specified, the stopwatch will not end.
   - `startPaused` (optional boolean): determines whether the stopwatch should start in a paused state. Defaults to false.
   - `onFinish` (optional function): a function that will be called when the stopwatch reaches the final value.
   - `separator` (optional string): specifies the separator to be used between days, hours, minutes, and seconds when the time is represented as a string. By default, colon (:) is used as a separator.
@@ -156,10 +156,10 @@ It returns an object with the following props:
 - `currentMinutes`: a number indicating the current value of the minutes on the stopwatch.
 - `currentSeconds`: a number indicating the current value of the seconds on the stopwatch.
 - `elapsedSeconds`: a number indicating the total elapsed time, calculated in seconds, since the stopwatch started.
-- `remainingSeconds`: a number indicating the total remaining time, calculated in seconds, until the stopwatch reaches the initially set time. If the `endTime` is not specified, it will always be 0.
+- `remainingSeconds`: a number indicating the total remaining time, calculated in seconds, until the stopwatch reaches the initially set time. If `endTime` is not specified, it will always be 0.
 - `remainingTime`: analogous to the `current` object, this object holds the remaining time in both formats:
-  - `withLeadingZero`: a string indicating the remaining time with leading zeroes. If the `endTime` is not specified, it will always be 00:00:00:00.
-  - `withoutLeadingZero`: a string indicating the remaining time without leading zeroes. If the `endTime` is not specified, it will always be 0:0:0:0.
+  - `withLeadingZero`: a string indicating the remaining time with leading zeroes. If `endTime` is not specified, it will always be 00:00:00:00.
+  - `withoutLeadingZero`: a string indicating the remaining time without leading zeroes. If `endTime` is not specified, it will always be 0:0:0:0.
 - `pause`: a function that, when called, will pause the stopwatch.
 - `play`: a function that, when called, will resume (or start) the stopwatch.
 - `reset`: a function that, when called, will reset the stopwatch.
@@ -224,7 +224,7 @@ The useTimer hook provides timer functionality.
 
 It takes two arguments:
 
-- `startTime` (string): specifies the time when the timer will begin. It must be in the `dd:hh:mm:ss` format.
+- `startTime` (string): specifies the time at which the timer will start. It must be in `dd:hh:mm:ss` format.
 - `options`(optional object): the options for the timer.
   - `startPaused` (optional boolean): determines whether the timer should start in a paused state. Defaults to false.
   - `onFinish` (optional function): a function that will be called when the timer reaches the final value.
@@ -275,7 +275,7 @@ const ReactCounter = () => {
   } = useTimer("00:00:00:10", {
     startPaused: true,
     separator: "-",
-    onFinish: () => console.log("Stopwatch ended"),
+    onFinish: () => console.log("Timer ended"),
   });
 
   return (
