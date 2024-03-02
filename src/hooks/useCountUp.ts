@@ -1,10 +1,10 @@
-import { BaseCounter, BaseOptions } from "../interfaces";
+import { BaseCounter, BaseCounterOptions } from "../interfaces";
 import { useCounter } from "../helpers";
 
 export const useCountUp = (
   min: number,
   max: number,
-  options?: BaseOptions
+  options?: BaseCounterOptions
 ): BaseCounter =>
   useCounter(min, max, true, {
     startPaused: options?.startPaused,

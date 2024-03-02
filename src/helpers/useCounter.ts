@@ -1,12 +1,12 @@
 import { useState, useEffect } from "react";
-import { BaseCounter, BaseOptions } from "../interfaces";
+import { BaseCounter, BaseCounterOptions } from "../interfaces";
 import { addLeadingZero } from ".";
 
 export const useCounter = (
   min: number,
   max: number,
   isCountingUp: boolean,
-  options: BaseOptions
+  options: BaseCounterOptions
 ): BaseCounter => {
   if (min >= max) {
     throw new Error("The min parameter has to be less than the max parameter.");
