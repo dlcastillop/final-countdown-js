@@ -186,7 +186,12 @@ const ReactCounter = () => {
     play,
     reset,
     togglePause,
-  } = useStopwatch(1, 0, 10, 50);
+  } = useStopwatch({
+    endTime: "00:00:00:10",
+    startPaused: true,
+    separator: "-",
+    onFinish: () => console.log("Stopwatch ended"),
+  });
 
   return (
     <div>
