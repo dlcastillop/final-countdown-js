@@ -1,6 +1,6 @@
 # <img src="https://github.com/dlcastillop/dlcastillop/blob/main/logos/final-countdown-js-logo.png" width="40" height="40" /> Final Countdown JS
 
-Final Countdown JS is a react hook library to handle all kinds of timers.
+Final Countdown JS is a library of React hooks to manage counters, timers and stopwatches.
 
 ## Featured
 

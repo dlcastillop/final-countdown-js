@@ -1,6 +1,6 @@
 {
   "name": "final-countdown-js",
-  "description": "A React hook library to handle all kinds of timers",
+  "description": "A library of React hooks to manage counters, timers and stopwatches",
   "repository": {
     "type": "git",
     "url": "https://github.com/dlcastillop/final-countdown-js"
@@ -9,13 +9,14 @@
     "timer",
     "timers",
     "stopwatch",
+    "stopwatches",
     "counter",
     "counters"
   ],
   "author": "Daniel Castillo <daniel@dlcastillop.com",
   "license": "MIT",
   "private": false,
-  "version": "1.5.1",
+  "version": "2.0.0",
   "type": "module",
   "main": "dist/final-countdown-js.umd.js",
   "module": "dist/final-countdown-js.es.js",
