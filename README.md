@@ -87,8 +87,9 @@ It takes three arguments:
 
 - `min` (number): the initial value of the counter.
 - `max`(number): the final value of the counter. It has to be greater than `min`.
-- `startPaused` (optional boolean): a boolean flag that determines whether the counter should start in a paused state. Defaults to false.
-- `onFinish` (optional function): a function that will be called when the counter reaches the final value.
+- `options`(optional object): the options for the counter.
+  - `startPaused` (optional boolean): a boolean flag that determines whether the counter should start in a paused state. Defaults to false.
+  - `onFinish` (optional function): a function that will be called when the counter reaches the final value.
 
 It returns an object with the following props:
 
@@ -109,7 +110,10 @@ import { useCountUp } from "final-countdown-js";
 
 const ReactCounter = () => {
   const { current, isPaused, isOver, pause, play, reset, togglePause } =
-    useCountDown(0, 10);
+    useCountUp(0, 10, {
+      startPaused: false,
+      onFinish: () => console.log("Counter ended"),
+    });
 
   return (
     <div>
