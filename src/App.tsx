@@ -1,9 +1,9 @@
-import { useTimer } from "./hooks";
+import { useStopwatch } from "./hooks";
 
 const App = () => {
   const {
     current,
-    elapsedTime,
+    remainingTime,
     currentDays,
     currentHours,
     currentMinutes,
@@ -16,16 +16,16 @@ const App = () => {
     play,
     reset,
     togglePause,
-  } = useTimer("00:00:00:03", {
-    onFinish: () => console.log("asd"),
+  } = useStopwatch({
+    endTime: "00:00:10:03",
   });
 
   return (
     <div>
-      <p>Timer value: {current.withLeadingZero}</p>
-      <p>Timer value: {current.withoutLeadingZero}</p>
-      <p>Elapsed time: {elapsedTime.withLeadingZero}</p>
-      <p>Elapsed time: {elapsedTime.withoutLeadingZero}</p>
+      <p>Stopwatch value: {current.withLeadingZero}</p>
+      <p>Stopwatch value: {current.withoutLeadingZero}</p>
+      <p>Remaining time: {remainingTime.withLeadingZero}</p>
+      <p>Remaining time: {remainingTime.withoutLeadingZero}</p>
       <p>Days: {currentDays}</p>
       <p>Hours: {currentHours}</p>
       <p>Minutes: {currentMinutes}</p>

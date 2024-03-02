@@ -86,15 +86,16 @@ export const useInternalStopwatch = (
     currentSeconds: time.seconds,
     elapsedSeconds:
       time.days * 86400 + time.hours * 3600 + time.minutes * 60 + time.seconds,
-    remainingSeconds:
-      days * 86400 +
-      hours * 3600 +
-      minutes * 60 +
-      seconds -
-      (time.days * 86400 +
-        time.hours * 3600 +
-        time.minutes * 60 +
-        time.seconds),
+    remainingSeconds: endTime
+      ? days * 86400 +
+        hours * 3600 +
+        minutes * 60 +
+        seconds -
+        (time.days * 86400 +
+          time.hours * 3600 +
+          time.minutes * 60 +
+          time.seconds)
+      : 0,
     pause: () => setPaused(true),
     play: () => setPaused(false),
     reset: () => {
