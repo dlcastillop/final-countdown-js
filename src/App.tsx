@@ -17,7 +17,10 @@ const App = () => {
     reset,
     togglePause,
   } = useStopwatch({
-    endTime: "00:00:10:03",
+    endTime: "00:00:00:10",
+    startPaused: true,
+    separator: "-",
+    onFinish: () => console.log("Stopwatch ended"),
   });
 
   return (

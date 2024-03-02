@@ -34,8 +34,9 @@ It takes three arguments:
 
 - `min` (number): the initial value of the counter.
 - `max`(number): the final value of the counter. It has to be greater than `min`.
-- `startPaused` (optional boolean): a boolean flag that determines whether the counter should start in a paused state. Defaults to false.
-- `onFinish` (optional function): a function that will be called when the counter reaches the final value.
+- `options`(optional object): the options for the counter.
+  - `startPaused` (optional boolean): determines whether the counter should start in a paused state. Defaults to false.
+  - `onFinish` (optional function): a function that will be called when the counter reaches the final value.
 
 It returns an object with the following props:
 
@@ -56,7 +57,10 @@ import { useCountDown } from "final-countdown-js";
 
 const ReactCounter = () => {
   const { current, isPaused, isOver, pause, play, reset, togglePause } =
-    useCountDown(0, 10);
+    useCountDown(0, 10, {
+      startPaused: false,
+      onFinish: () => console.log("Counter ended"),
+    });
 
   return (
     <div>
@@ -83,8 +87,9 @@ It takes three arguments:
 
 - `min` (number): the initial value of the counter.
 - `max`(number): the final value of the counter. It has to be greater than `min`.
-- `startPaused` (optional boolean): a boolean flag that determines whether the counter should start in a paused state. Defaults to false.
-- `onFinish` (optional function): a function that will be called when the counter reaches the final value.
+- `options`(optional object): the options for the counter.
+  - `startPaused` (optional boolean): determines whether the counter should start in a paused state. Defaults to false.
+  - `onFinish` (optional function): a function that will be called when the counter reaches the final value.
 
 It returns an object with the following props:
 
@@ -105,7 +110,10 @@ import { useCountUp } from "final-countdown-js";
 
 const ReactCounter = () => {
   const { current, isPaused, isOver, pause, play, reset, togglePause } =
-    useCountDown(0, 10);
+    useCountUp(0, 10, {
+      startPaused: false,
+      onFinish: () => console.log("Counter ended"),
+    });
 
   return (
     <div>
@@ -126,17 +134,15 @@ export default ReactCounter;
 
 ### useStopwatch
 
-The useStopwatch hook provides stopwatch functionality with a limit.
+The useStopwatch hook provides stopwatch functionality with or without a limit.
 
-It takes six arguments:
+It takes one argument:
 
-- `days` (number): the final value of the days. It has to be equal to or greater than 0.
-- `hours` (number): the final value of the hours. The value must be between 0 (inclusive) and 24 (exclusive).
-- `minutes` (number): the final value of the minutes. The value must be between 0 (inclusive) and 60 (exclusive).
-- `seconds` (number): the final value of the seconds. The value must be between 0 (inclusive) and 60 (exclusive).
-- `startPaused` (optional boolean): a boolean flag that determines whether the stopwatch should start in a paused state. Defaults to false.
-- `separator` (optional string): a string that specifies the separator to be used between days, hours, minutes, and seconds when the time is represented as a string. By default, colon (:) is used as a separator.
-- `onFinish` (optional function): a function that will be called when the stopwatch reaches the final value.
+- `options`(optional object): the options for the stopwatch.
+  - `endTime` (options string): specifies the time at which the stopwatch will stop. It must be in `dd:hh:mm:ss` format. If not specified, the stopwatch will not end.
+  - `startPaused` (optional boolean): determines whether the stopwatch should start in a paused state. Defaults to false.
+  - `onFinish` (optional function): a function that will be called when the stopwatch reaches the final value.
+  - `separator` (optional string): specifies the separator to be used between days, hours, minutes, and seconds when the time is represented as a string. By default, colon (:) is used as a separator.
 
 It returns an object with the following props:
 
@@ -150,10 +156,10 @@ It returns an object with the following props:
 - `currentMinutes`: a number indicating the current value of the minutes on the stopwatch.
 - `currentSeconds`: a number indicating the current value of the seconds on the stopwatch.
 - `elapsedSeconds`: a number indicating the total elapsed time, calculated in seconds, since the stopwatch started.
-- `remainingSeconds`: a number indicating the total remaining time, calculated in seconds, until the stopwatch reaches the initially set time.
+- `remainingSeconds`: a number indicating the total remaining time, calculated in seconds, until the stopwatch reaches the initially set time. If `endTime` is not specified, it will always be 0.
 - `remainingTime`: analogous to the `current` object, this object holds the remaining time in both formats:
-  - `withLeadingZero`: a string indicating the remaining time with leading zeroes.
-  - `withoutLeadingZero`: a string indicating the remaining time without leading zeroes.
+  - `withLeadingZero`: a string indicating the remaining time with leading zeroes. If `endTime` is not specified, it will always be 00:00:00:00.
+  - `withoutLeadingZero`: a string indicating the remaining time without leading zeroes. If `endTime` is not specified, it will always be 0:0:0:0.
 - `pause`: a function that, when called, will pause the stopwatch.
 - `play`: a function that, when called, will resume (or start) the stopwatch.
 - `reset`: a function that, when called, will reset the stopwatch.
@@ -180,7 +186,12 @@ const ReactCounter = () => {
     play,
     reset,
     togglePause,
-  } = useStopwatch(1, 0, 10, 50);
+  } = useStopwatch({
+    endTime: "00:00:00:10",
+    startPaused: true,
+    separator: "-",
+    onFinish: () => console.log("Stopwatch ended"),
+  });
 
   return (
     <div>
@@ -207,85 +218,17 @@ const ReactCounter = () => {
 export default ReactCounter;
 ```
 
-### useUnlimitedStopwatch
-
-The useStopwatch hook provides unlimited stopwatch functionality.
-
-It takes two arguments:
-
-- `startPaused` (optional boolean): a boolean flag that determines whether the stopwatch should start in a paused state. Defaults to false.
-- `separator` (optional string): a string that specifies the separator to be used between days, hours, minutes, and seconds when the time is represented as a string. By default, colon (:) is used as a separator.
-
-It returns an object with the following props:
-
-- `current`: an object holding the current time of the stopwatch in both leading zero and non-leading zero formats. This object has two properties:
-  - `withLeadingZero`: a string indicating the current time of the stopwatch with leading zeroes where necessary.
-  - `withoutLeadingZero`: a string indicating the current time of the stopwatch without leading zeros.
-- `isPaused`: a boolean value indicating if the stopwatch is currently paused.
-- `currentDays`: a number indicating the current value of the days on the stopwatch.
-- `currentHours`: a number indicating the current value of the hours on the stopwatch.
-- `currentMinutes`: a number indicating the current value of the minutes on the stopwatch.
-- `currentSeconds`: a number indicating the current value of the seconds on the stopwatch.
-- `elapsedSeconds`: a number indicating the total elapsed time, calculated in seconds, since the stopwatch started.
-- `pause`: a function that, when called, will pause the stopwatch.
-- `play`: a function that, when called, will resume (or start) the stopwatch.
-- `reset`: a function that, when called, will reset the stopwatch.
-- `togglePause`: a function that, when called, will toggle between pausing and playing the stopwatch.
-
-Example:
-
-```tsx
-import { useUnlimitedStopwatch } from "final-countdown-js";
-
-const ReactCounter = () => {
-  const {
-    current,
-    currentDays,
-    currentHours,
-    currentMinutes,
-    currentSeconds,
-    elapsedSeconds,
-    isPaused,
-    pause,
-    play,
-    reset,
-    togglePause,
-  } = useUnlimitedStopwatch();
-
-  return (
-    <div>
-      <p>Counter value: {current.withLeadingZero}</p>
-      <p>Counter value: {current.withoutLeadingZero}</p>
-      <p>Days: {currentDays}</p>
-      <p>Hours: {currentHours}</p>
-      <p>Minutes: {currentMinutes}</p>
-      <p>Seconds: {currentSeconds}</p>
-      <p>Elapsed seconds: {elapsedSeconds}</p>
-      <p>Is the counter paused? {isPaused ? "Yes" : "No"}</p>
-      <button onClick={pause}>Pause</button>
-      <button onClick={play}>Play</button>
-      <button onClick={reset}>Reset</button>
-      <button onClick={togglePause}>Toggle Pause</button>
-    </div>
-  );
-};
-
-export default ReactCounter;
-```
-
 ### useTimer
 
 The useTimer hook provides timer functionality.
 
-It takes six arguments:
+It takes two arguments:
 
-- `days` (number): the initial value of the days. It has to be equal to or greater than 0.
-- `hours` (number): the initial value of the hours. The value must be between 0 (inclusive) and 24 (exclusive).
-- `minutes` (number): the initial value of the minutes. The value must be between 0 (inclusive) and 60 (exclusive).
-- `seconds` (number): the initial value of the seconds. The value must be between 0 (inclusive) and 60 (exclusive).
-- `startPaused` (optional boolean): a boolean flag that determines whether the timer should start in a paused state. Defaults to false.
-- `separator` (optional string): a string that specifies the separator to be used between days, hours, minutes, and seconds when the time is represented as a string. By default, colon (:) is used as a separator.
-- `onFinish` (optional function): a function that will be called when the timer reaches the final value.
+- `startTime` (string): specifies the time at which the timer will start. It must be in `dd:hh:mm:ss` format.
+- `options`(optional object): the options for the timer.
+  - `startPaused` (optional boolean): determines whether the timer should start in a paused state. Defaults to false.
+  - `onFinish` (optional function): a function that will be called when the timer reaches the final value.
+  - `separator` (optional string): specifies the separator to be used between days, hours, minutes, and seconds when the time is represented as a string. By default, colon (:) is used as a separator.
 
 It returns an object with the following props:
 
@@ -329,7 +272,11 @@ const ReactCounter = () => {
     play,
     reset,
     togglePause,
-  } = useTimer(0, 10, 50);
+  } = useTimer("00:00:00:10", {
+    startPaused: true,
+    separator: "-",
+    onFinish: () => console.log("Timer ended"),
+  });
 
   return (
     <div>
