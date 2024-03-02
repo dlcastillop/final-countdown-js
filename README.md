@@ -222,15 +222,13 @@ export default ReactCounter;
 
 The useTimer hook provides timer functionality.
 
-It takes six arguments:
+It takes two arguments:
 
-- `days` (number): the initial value of the days. It has to be equal to or greater than 0.
-- `hours` (number): the initial value of the hours. The value must be between 0 (inclusive) and 24 (exclusive).
-- `minutes` (number): the initial value of the minutes. The value must be between 0 (inclusive) and 60 (exclusive).
-- `seconds` (number): the initial value of the seconds. The value must be between 0 (inclusive) and 60 (exclusive).
-- `startPaused` (optional boolean): a boolean flag that determines whether the timer should start in a paused state. Defaults to false.
-- `separator` (optional string): a string that specifies the separator to be used between days, hours, minutes, and seconds when the time is represented as a string. By default, colon (:) is used as a separator.
-- `onFinish` (optional function): a function that will be called when the timer reaches the final value.
+- `startTime` (string): specifies the time when the timer will begin. It must be in the `dd:hh:mm:ss` format.
+- `options`(optional object): the options for the timer.
+  - `startPaused` (optional boolean): determines whether the timer should start in a paused state. Defaults to false.
+  - `onFinish` (optional function): a function that will be called when the timer reaches the final value.
+  - `separator` (optional string): specifies the separator to be used between days, hours, minutes, and seconds when the time is represented as a string. By default, colon (:) is used as a separator.
 
 It returns an object with the following props:
 
@@ -274,7 +272,11 @@ const ReactCounter = () => {
     play,
     reset,
     togglePause,
-  } = useTimer(0, 10, 50);
+  } = useTimer("00:00:00:10", {
+    startPaused: true,
+    separator: "-",
+    onFinish: () => console.log("Stopwatch ended"),
+  });
 
   return (
     <div>
