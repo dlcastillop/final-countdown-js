@@ -6,6 +6,7 @@ export interface BaseCounterOptions {
 
 export interface TimerOptions extends BaseCounterOptions {
   separator?: string;
+  onPause?: () => void;
 }
 
 export interface StopwatchOptions extends TimerOptions {

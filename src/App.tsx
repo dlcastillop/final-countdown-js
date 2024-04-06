@@ -1,10 +1,8 @@
-import { useCountUp } from "./hooks";
+import { useStopwatch } from "./hooks";
 
 const App = () => {
   const { current, isPaused, isOver, pause, play, reset, togglePause } =
-    useCountUp(1, 10, {
-      onFinish: () => console.log("Counter ended"),
-    });
+    useStopwatch();
 
   return (
     <div>

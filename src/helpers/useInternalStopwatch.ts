@@ -5,7 +5,7 @@ import { InternalCounter, StopwatchOptions } from "../interfaces";
 export const useInternalStopwatch = (
   options: StopwatchOptions
 ): InternalCounter => {
-  const { startPaused, separator, onFinish, endTime } = options;
+  const { startPaused, separator, onFinish, endTime, onPause } = options;
   const { days, hours, minutes, seconds } = parseTime(endTime ?? "0:0:0:0");
   const [time, setTime] = useState({
     days: 0,
@@ -96,7 +96,10 @@ export const useInternalStopwatch = (
           time.minutes * 60 +
           time.seconds)
       : 0,
-    pause: () => setPaused(true),
+    pause: () => {
+      setPaused(true);
+      onPause && onPause();
+    },
     play: () => setPaused(false),
     reset: () => {
       setIsOver(false);
