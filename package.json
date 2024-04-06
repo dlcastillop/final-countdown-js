@@ -16,7 +16,7 @@
   "author": "Daniel Castillo <daniel@dlcastillop.com",
   "license": "MIT",
   "private": false,
-  "version": "2.0.0",
+  "version": "2.0.1",
   "type": "module",
   "main": "dist/final-countdown-js.umd.js",
   "module": "dist/final-countdown-js.es.js",
