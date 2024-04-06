@@ -26,6 +26,9 @@ pnpm install final-countdown-js
 
 ## Hooks
 
+> [!NOTE]  
+> Do you want to use these hooks, but without installing an extra dependency? Try [Nova.js: a collection of dependency-free React hooks](https://novajs.co/).
+
 ### useCountDown
 
 The useCountDown hook provides a simple countdown timer functionality.
