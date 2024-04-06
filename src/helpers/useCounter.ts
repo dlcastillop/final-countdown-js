@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import { BaseCounter, BaseCounterOptions } from "../interfaces";
 import { addLeadingZero } from ".";
 
@@ -16,6 +16,7 @@ export const useCounter = (
   const [count, setCount] = useState(isCountingUp ? min : max);
   const [paused, setPaused] = useState(startPaused ?? false);
   const [isOver, setIsOver] = useState(false);
+  const wasPausedRef = useRef(startPaused ?? false);
 
   useEffect(() => {
     if (paused) {
@@ -42,8 +43,11 @@ export const useCounter = (
   }, [isOver]);
 
   useEffect(() => {
-    paused && onPause && onPause();
-  }, [paused]);
+    if (!wasPausedRef.current && paused) {
+      onPause && onPause();
+    }
+    wasPausedRef.current = paused;
+  }, [paused, onPause]);
 
   return {
     current: {
