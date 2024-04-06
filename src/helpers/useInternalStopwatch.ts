@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import { addLeadingZero, parseTime } from "../helpers";
 import { InternalCounter, StopwatchOptions } from "../interfaces";
 
@@ -16,6 +16,7 @@ export const useInternalStopwatch = (
   const [paused, setPaused] = useState(startPaused ?? false);
   const divider = separator ?? ":";
   const [isOver, setIsOver] = useState(false);
+  const wasPausedRef = useRef(startPaused ?? false);
 
   useEffect(() => {
     if (paused) {
@@ -69,6 +70,13 @@ export const useInternalStopwatch = (
     isOver && onFinish && onFinish();
   }, [isOver]);
 
+  useEffect(() => {
+    if (!wasPausedRef.current && paused) {
+      onPause && onPause();
+    }
+    wasPausedRef.current = paused;
+  }, [paused, onPause]);
+
   return {
     current: {
       withLeadingZero: `${addLeadingZero(time.days)}${divider}${addLeadingZero(
@@ -98,7 +106,6 @@ export const useInternalStopwatch = (
       : 0,
     pause: () => {
       setPaused(true);
-      onPause && onPause();
     },
     play: () => setPaused(false),
     reset: () => {
