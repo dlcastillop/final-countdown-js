@@ -1,5 +1,0 @@
-{
-  "name": "@dlcastillop/final-countdown-js",
-  "version": "2.0.0",
-  "exports": "./src/hooks/index.ts"
-}
