@@ -12,7 +12,7 @@ export const useCounter = (
     throw new Error("The min parameter has to be less than the max parameter.");
   }
 
-  const { startPaused, onFinish } = options;
+  const { startPaused, onFinish, onPause } = options;
   const [count, setCount] = useState(isCountingUp ? min : max);
   const [paused, setPaused] = useState(startPaused ?? false);
   const [isOver, setIsOver] = useState(false);
@@ -40,6 +40,10 @@ export const useCounter = (
   useEffect(() => {
     isOver && onFinish && onFinish();
   }, [isOver]);
+
+  useEffect(() => {
+    paused && onPause && onPause();
+  }, [paused]);
 
   return {
     current: {

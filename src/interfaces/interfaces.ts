@@ -1,6 +1,7 @@
 export interface BaseCounterOptions {
   startPaused?: boolean;
   onFinish?: () => void;
+  onPause?: () => void;
 }
 
 export interface TimerOptions extends BaseCounterOptions {

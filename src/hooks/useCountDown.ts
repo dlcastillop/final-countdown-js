@@ -9,4 +9,5 @@ export const useCountDown = (
   useCounter(min, max, false, {
     startPaused: options?.startPaused,
     onFinish: options?.onFinish,
+    onPause: options?.onPause,
   });
